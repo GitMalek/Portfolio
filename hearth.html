@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From The Hearth - Your Name</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">About Me</a>
+        <a href="projects.html">Design Projects</a>
+        <a href="skills.html">Other Skills</a>
+    </nav>
+
+<!-- Page Navigation Controls -->
+<div class="page-controls">
+    <button id="prev-btn">← Previous</button>
+    
+    <div class="page-info">
+        <!-- Chapter selection -->
+        <span>Topic:</span>
+        <select id="chapter-dropdown">
+            <option value="0">Pitch</option>
+            <option value="1">System Design 1: Inspiration Economy</option>
+            <option value="2">System Design 2: Notation Crafting</option>
+            <option value="3">System Design 3: Modifiers</option>
+            <option value="4">System Design 4: Mechanical Progression</option>
+            <option value="5">UX Design</option>
+            <option value="6">Narrative Design 1: Structure, Intro, Progression</option>
+            <option value="7">Narrative Design 2: Worldbuilding</option>
+            <option value="8">Narrative Design 3: Character Arc Integration</option>
+        </select>
+        <span id="chapter-number">1</span> / <span id="total-chapters">3</span>
+        
+        <!-- Page selection within chapter -->
+        <span style="margin-left: 1rem;">Page:</span>
+        <select id="page-dropdown">
+            <option value="0">Overview</option>
+        </select>
+        <span id="page-number">1</span> / <span id="total-pages">1</span>
+    </div>
+    
+    <button id="next-btn">Next →</button>
+</div>
+
+<!-- Project Pages Container -->
+<div class="project-container">
+    <!-- Topic 0: From The Hearth (1 page) -->
+    <div class="project-page active" data-chapter="0" data-page="0">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h1>From The Hearth</h1>
+            <div class="side-note">Sometimes I'll describe potential future improvements or system expansions in these little notes off to the side.</div>
+            <p>My current passion project, and the one I believe has the widest array 
+            of design challenges I've taken on so far. While the scope is ambitious
+            especially for a solo developer's debut commercial product, I'll be 
+            describing what I consider to be a minimum viable product that seems interesting and
+            feasible based on what I've built, sparingly mentioning potential
+            avenues for expansion. I've also intentionally structured its development 
+            in a way where once I've proven mechanics, I can release content expansions 
+            beyond that in stages.
+            </p><br>
+
+            <h2>Pitch</h2>
+            <br>
+            <p> 
+            <b>From The Hearth</b> is a fantasy cooking RPG, you play as a newly hired chef for a freshly made guild in a burgeoning settlement on an uncharted frontier, your food helps your guildmates grow their skills, and as people as you protect a peace under threat and build something new. <br><br>
+            </p> 
+            <p>
+            <b>The Core Loop</b> revolves around cooking tailored meals for a defined cast of characters- they need different types of inspiration relating to their roles to help the guild and town grow,
+            and your choice of dish, ingredients, technique, and decoration across the guild contrasted with their own personal taste decides what kind they gain and how much of it.<br><br>
+            </p>
+            <p>
+            <b>The overall goal</b> for the design is making decisions feel thoughtful and socially meaningful. The dish you make to cheer someone up should be different to the dish you often make for their day to day, 
+            and players should care about variety and a character's individual preferences to not just develop their skills, acquire unlocks, and progress the story- but to grow deeper relationships and learn more about 
+            their favorite characters.<br><br>
+                
+            While I'm aiming for a somewhat cozy experience, I want to include more serious aspects and tension for the player and the characters to overcome- both in terms of external and internal struggles.
+            </p>
+            <div class="scroll-shadow-bottom"></div>
+            </div>
+    </div>
+
+    <!-- Topic 1: System Design 1: Inspiration Economy (3 pages) -->
+    <div class="project-page" data-chapter="1" data-page="0">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h1>Design Challenge</h1>
+            <br>
+            <p> Having every dish just provide generic buffs or experience points, will cause players to optimize to the single most efficient recipe 
+                and repeat it endlessly. How can I make a reward system where the "best" dish changes based on who you're cooking for and
+                what they're generally doing? How do I incentivize variety and thoughtfulness rather than repetition?<br><br>
+                
+                Buffs and flat bonuses can still exist, but the <b><i>core</i></b> incentive for cooking has to be one that ties into every other aspect
+                of the game, being context sensitive on a character-by-character basis <b><i>AND</i></b> other external circumstances, such as schedule. 
+            </p>
+            <div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+    
+    <div class="project-page" data-chapter="1" data-page="1">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h2>Approach</h2>
+            <br> <br>            
+            <p class ="starts-single-letter"><span class="single-letter-word">I</span> structured progression around "inspiration," a resource similar to Runescape's skill-specific experience points. Inspiration is spent
+                for permanent skill unlocks, and occasional use of abilities or performing tasks. Different characters need different inspiration types, 
+                (martial for fighters, artistic for bards), Most food generates a large pool of 'general' inspiration by default, and ingredients convert
+                portions of that pool into specific types during cooking. This helped eliminate the potential of there being 'one optimal recipe' for all characters.<br><br>
+
+                But I wanted depth and variety in choice not just across characters, feeding one character the best martial meal and another the best artistic 
+                meal still didn't provide the level of thoughtfulness I wanted. To solve this, I added three delivery methods for inspiration:
+            </p>
+            <br>
+            <h3><b>Instant inspiration:</b></h3><br>
+            <p>
+                gives immediate value when eaten. Simple and reliable, but typically grants less total inspiration than other methods.
+            </p><br>
+            <h3><b>Inspiration over time:</b></h3><br>
+            <p>
+                provides the most total inspiration, doled out in smaller amounts over several days. Always beneficial when you keep it active, but a
+                higher value application overwrites any applied inspiration over time buffs. Best spaced out.
+            </p><br>
+            <h3><b>Banked Inspiration:</b></h3><br>
+            <p>
+                doubles the inspiration characters gain from their own activities like training or studying. It deteriorates if unused, so timing 
+                matters— you want to feed them this right before they train.
+            </p>
+            <div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+    
+    <div class="project-page" data-chapter="1" data-page="2">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h2>Handling Imperfect Choices</h2> <br><br>
+            <div class="side-note">Characters with a faith could unlock a perk to convert divine inspiration to another type at 2:1. A cleric character is planned for the future that can improve it further.</div>
+            <p>To keep the system forgiving rather than punishing, I added manual conversion. 
+            If a character gains an inspiration type they don't really use, you can convert it at a cost 
+            (3:1 for specific types, 2:1 for general inspiration, as opposed to the 1:1 during the cooking process). 
+            This makes suboptimal cooking feel recoverable rather than wasted. This maintains the warm and cozy atmosphere, 
+            but also rewards and encourages thoughtfulness.<br><br>
+
+            The option to do this is available at any time, so the player doesn't have to think about it until they
+            need inspiration of a type they don't have. If a character's short of something they want to spend it on,
+            they can just convert a type they can convert from a type they don't use often then and there. All inspiration
+            is good, some is just more valuable for certain characters.
+
+            There's room to introduce some perks that lower the conversion rates between two types down the line.
+            </p>
+            <div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+
+    <!-- Topic 2: Notation Crafting (3 pages) -->
+    <div class="project-page" data-chapter="2" data-page="0">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h1>Design Challenge</h1><br>
+            <p>Most cooking systems are either pure menu selection (picking a recipe name from a list) or minigames focused on execution skill. Neither captures the thoughtfulness 
+            I'm trying to evoke from cooking— considering what ingredients you have, how to prepare them, what the result will be, and most importantly- who they're for and why.
+            <br><br>
+            Menu navigation and lists of options are fine, but the player's decision making process needs to simulate the thoughtfulness of accounting for a character's needs,
+            likes, and situation. How do we vary our recipes so that there's clear depth in each choice you make? From ingredient, to method, to texture to timing.
+            </p>
+            <div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+    
+    <div class="project-page" data-chapter="2" data-page="1">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h2>Approach</h2>
+            <br><br>
+            <p class ="starts-single-letter"><span class="single-letter-word">I</span> started by looking parametric crafting, where ingredient quality affects output (like Minecraft's tool tiers). A sandwich with rare ingredients should be better than one with common ingredients. 
+            But this still led to logical optimization, not context sensitive thoughtfulness— players would just find the best ingredients for each recipe and repeat that combination. 
+            I needed the <i>type</i> of ingredient to matter, not just quality. A stir-fry with broccoli should serve a different purpose than one with mushrooms. Preparation methods should matter too—frying 
+            versus boiling the same ingredient should produce different results.<br><br>
+
+            This led me to notation-based crafting, inspired by <a href="https://mitadmissions.org/blogs/entry/parametric-cooking/" target="_blank">this paper on parametric cooking</a>. 
+            While still using fixed recipes, I also use functional categories: a stir fry recipe can call for for "vegetables, pan-frying + optional protein" 
+            rather than specifically "chicken + broccoli + pan-frying" Players choose what kind of protein (meat, egg, seafood), what kind of (Hearty, Leafy, Root). 
+            The potential for specific recipes to call for specific ingredients is still there, a 'Steak and Eggs' can still call for specifically 'Meat, Egg, Pan-frying'... 
+            but you still can choose what type of egg, what cut of steak, and how to season it.</p>
+            <div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+
+    <div class="project-page" data-chapter="2" data-page="2">
+        <div class="page-content align-right">
+            <div class="scroll-shadow"></div>
+            <h2>Why This Works</h2>
+            <br><br>
+            <p>The hierarchy of abstraction- food groups, subgroups, types, and forms- lets me assign effects at different levels of specificity.</p><br><br>
+
+            <h3>Food Groups</h3>
+            <p>(Protein, Vegetables, Grains, etc.) provide broad effects: all proteins boost physical inspiration types like martial or construction, all vegetables boost mental types like medicinal or artistic, grains boost the general inspiration pool, etc. 
+            This ensures even unfamiliar ingredients have predictable, and vital baseline behavior.</p>
+
+            <h3>Subgroups</h3>
+            <p>determine delivery methods: within proteins, meat provides over-time inspiration, eggs provide banked inspiration, seafood provides instant inspiration. 
+            Now choosing between meat and eggs isn't just about stats—it's about <i>when</i> that character needs the inspiration.</p>
+
+            <h3>Types</h3>
+            <p>add targeted variation: chicken eggs split inspiration between multiple physical types (great for a generalist, and also 'generally good' for most physical characters), while cockatrice eggs convert purely to martial inspiration (best for the fighter specifically). 
+            Duck eggs can be identical to chicken eggs, but carry a modifier that grants an inspiration boost if they're used in baking. 
+            Players can learn which specific ingredients suit which characters and situations.</p>
+
+            <h3>Forms</h3>
+            <p>are only occasionally accounted for, and capture personal preferences: hard sunny-side up versus over-easy eggs, rare versus well-done steak, 
+            sirloin vs ribeye. If you know a character has a preference, you can appeal to it when you're cooking and it'll boost relationship points gained 
+            with them for remembering what they like. It won't always come up, but it'll reward you here and there for keeping it in mind.</p>
+
+            <p>If you'll notice, the more specific you get with your choices, the less all-encompassing the effect is. A player can at first get by just thinking 
+                'okay, proteins for the fighter', then 'I'll prepare eggs before they train, meat when they don't have an over-time buff, and seafood otherwise' comes after. 
+                Beyond that, everything else incrementally makes the bonuses better, and act as rewards for striving to think deeper. I want a base minimum level of thoughtfulness 
+                to be required but have the system be somewhat forgiving to start, while having plenty of room for people that want to be perfect. Expectations from the player can 
+                grow as they get the hang of things.</p><br><br>
+
+            <p>I call this notation-based crafting, because while the player never has to see it- <span class="tooltip-trigger" data-tooltip="tip1">I'm actually structuring ingredients 
+                like chemical formulas entirely on the backend.</span> This is exclusively for my convenience, because it makes it easier to keep track of what makes up a <span class="tooltip-trigger" data-tooltip="tip2">complex ingredient</span>,
+                and also easily design recipes that can accept multiple parameters by
+                <span class="tooltip-trigger" data-tooltip="tip3">writing out their notation.</span></p>
+            <div class="scroll-shadow-bottom"></div>
+        </div>
+        <span class="tooltip-box" id="tip1">A 'base ingredient' that can't be cooked is written like this: P1(T1F1).<br><br> P means it's a protein, the first subgroup in the list of proteins is 'Egg', so P1.<br><br> T1 just means 'first type in the list of eggs', which is chicken. F1 is the same, but for form, which is whole. So this is one whole chicken egg.</span>
+        <span class="tooltip-box" id="tip2">A 'complex ingredient' is written out like this, Frg1(Ht1(P1(T1F1)))(T1F1).<br><br> The only two new elements are Frg1 and Ht1. <br><br>In the notations, cooking methods are 2 letters, complex ingredients are three.<br><br> This means you're looking at a chicken egg with Ht1, heating 1, or 'frying' applied to it. It's a Frg, a Fried EgG.<br><br> If there's optional ingredients, they're included in the notation separated by a +, so Ht1(P1(T1F1) + P1(T1F1)) is the fried egg recipe, with an optional extra egg that's been added in, both correspond to the same recipe, but the notation stores the extra info!</span>
+        <span class="tooltip-box" id="tip3">It's easy to make recipes that accept all sorts of different items. For example, veggie stir-fry can be Ht1(V*), which means that as long as it's fried, any vegetable is valid! A fried egg is Ht1(P1(T*F*)), as long as it's an egg that's fried- it accepts any type or form!<br><br> Don't worry, all of this notation business is purely backend, it just makes recipe creation and validation easy as pie. The player never has to see it.</span>
+    </div>
+<!--Topic 3: Modifiers (3 Pages)-->
+    <div class="project-page" data-chapter="3" data-page="0">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h1>Design Challenge</h1>
+            <br>
+            <p>The notation and inspiration systems create meaningful choices, but they're also complex. How do I add depth for players 
+            who want to optimize and roleplay without overwhelming players who just want to cook decent food and progress?<br><br>
+
+            The balancing act is that there should be a wide variety of variance within the food you can cook, and how you decide to cook it.
+            There has to be room for structured, boiler-plate effects <i>AND</i> unique attributes and effects that spice up what you can make,
+            and how characters react to them. Despite that, you need to somehow make it so that you don't need to memorize every single effect
+            by heart, or keep them all in mind at once.
+            </p>
+            <div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+
+        <div class="project-page" data-chapter="3" data-page="1">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h2>Approach</h2>
+            <br>
+            <br>
+            <p class ="starts-single-letter"><span class="single-letter-word">I</span> structured modifiers into tiers of importance, with the most impactful being mostly mechanical and the least impactful being primarily for roleplay and further optimization. 
+            The impactful modifiers are unavoidable—you interact with them just by cooking. The least impactful are rarer and more optionally sought out, rewarding players who want to go deeper without punishing those who don't.
+            </p>
+
+
+            <h3>Core Modifiers</h3>
+            <p>(food group, delivery method, conversion) generate the bulk of inspiration and are impossible to ignore. 
+            You can't make a dish without choosing a protein or vegetable, so these effects are always present. 
+            This ensures even casual players engage with the core systems.</p>
+
+            <h3>Supplementary Modifiers</h3>
+            <p>(taste profiles: savory, sweet, bitter, sour, spicy) provide small mechanical bonuses to inspiration but are mainly for speeding up inspiration gain. Savory boosts banked inspiration slightly, bitter increases the duration of an over time effect by a small time-slot amount, but matching a character's preferred taste order (like Savory > Sweet > Bitter) dramatically increases relationship points. This rewards attention to character details without making it mandatory for progression—you can pay less attention to taste and still level characters effectively, you'll just build relationships slower.</p>
+
+            <h3>Specialized Modifiers</h3><div class="side-note">There's a morning slot bonus modifier for breakfast items, but in the future- I can add weather & moods. Tea may taste better on rainy days, sweets may break someone out of a sad mood.</div>
+            <p>(preparation preferences, cultural origin, method-specific bonuses) are edge cases and 'tags' or descriptors that rarely matter but create optimization and roleplay opportunities. A character might prefer runny eggs over hard, or react strongly to dishes from their homeland. Players who specialize in baking can unlock modifiers that apply to all baked goods. These are primarily optional to consider—discovering and leveraging them allows players to perfect their craft or roleplay specific chef identities.</p>
+            <div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+
+    <div class="project-page" data-chapter="3" data-page="2">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h2>Why This Works:</h2>
+            <br>
+            <br>
+            <p>New players can focus on core modifiers and still progress. Intermediate players can engage with taste profiles to accelerate relationship building. 
+            Advanced players can chase specialization modifiers for optimization or roleplay. The complexity is gradual and controlled, not immediately mandatory.</p>
+            <div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+<!--Topic 4: Mechanical Progression-->
+    <div class="project-page" data-chapter="4" data-page="0">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h1>Design Challenge</h1>
+            <br>
+            <p>NPCs need to feel like they're contributing to the growth of the guild and the survival of the settlement, not just eating food for a bigger number. 
+            The player also needs to progress in a way that doesn't overshadow the characters they're meant to lift up.
+            </p>
+            <div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+
+    <div class="project-page" data-chapter="4" data-page="1">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h2>Approach</h2>
+            <br>
+            <br>
+            <p>Each character's progression handles separate but interacting elements of the gameplay.</p>
+            <h3>The Fighter</h3>
+            <p>A source of ingredients, they can be sent on hunts with a success rate and injury rate, some of these bring back 
+            ingredients and others have narrative effects. Levelling the fighter improves their success rate, and grants one-use
+            abilities that improve the success rate further that day at the cost of inspiration.</p>
+            <h3>The Medic</h3>
+            <p>the fighter's support, the more they're levelled up, the higher chance they'll cure the fighter's injury in a time slot- allowing them to go back to a hunt faster, they also unlock abilities that spend medicinal inspiration to lower injury rate on certain hunts. Some hunts may have a high injury rate even IF they've got a high success rate, 
+            such as ones in a poisonous swamp. Using a poison protection ability lowers the injury rate for those hunts.</p>
+            <h3>The Bard</h3>
+            <p>Your support, you can spend their inspiration to unlock songs that boost conversion to certain types of modifiers on that day. 
+            They're also the clear generalist, as while they primarily rely on artistic inspiration, if you want them to play a song that boosts 
+            martial inspiration gain they'll need to spend some of that as well.</p>
+            <h3>The Carpenter</h3>
+            <p>Everyone's Support, they provide permanent buffs and upgrades to the guild, as well as customization opportunities in the form of decoration.
+                you spend their inspiration to create furniture that boosts gains for certain inspiration types. They're also something of a generalist,
+                benefitting from other inspiration types to make furniture tailored to improving conversion-when-eating to that type
+            </p>
+            <div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+
+    <div class="project-page" data-chapter="4" data-page="2">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h2>The Player</h2>
+            <br>
+            <br>
+            <p>The player can eat too, same as everyone else. Cooking itself is a small source of culinary inspiration that can be doubled through banked inspiration. They
+            can spend their inspiration on occasional one-off abilities (usually for improving food quality), or two types of progression:
+            </p>
+
+            <h3>Skill Unlocks</h3>
+            <p>are permanent, incremental improvements—unlocking new recipes, adding modifiers to specific cooking methods 
+            (like boosting all baked goods), or adding more optional ingredient slots. These are straightforward power increases that give you more tools.</p>
+
+            <h3>Chef Identities</h3>
+            <p>specializations that can be 'slotted in' to define your playstyle, often with trade-offs. "Baker" grants significant bonuses to baked goods. "Vegetarian" buffs vegetable 
+            dishes and grants them traits that make some of them decent substitutes for meats while penalizing those meat dishes. The player can also equip identities relating to specific
+            nations in the world, boosting dishes marked as native to that nation- decreasing the effectiveness of ones from a rival one. You have a limited number of identity slots, though 
+            you can unlock more, and some identities are exclusive to each other, encouraging specialization and roleplay. Think Disco Elysium thought cabinet, these will hopefully offer some
+            rare dialogue options much in the same vein.</p>
+
+            <h3>Horizontal & Linear Progression</h3>
+            <p>Most customization lives on the player's side. The fighter and medic follow linear upgrade paths- you're just making them better at their jobs, 
+            they choose how to evolve. The bard and carpenter work with you so they offer some choice- 
+            which songs to unlock, which furniture to prioritize- letting you shape your own strategy and the environment you want to foster for the guild.
+            </p>
+            <div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+
+    <div class="project-page" data-chapter="4" data-page="3">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h2>Why This Works</h2>
+            <br>
+            <br>
+            <p>
+                NPC progression feels like unlocking new tools rather than exclusively just stat increases. 
+                The fighter opens up your ingredient list, the medic manages risk and unlocks new abilities, 
+                the bard supports your cooking, the carpenter lets you get permanent upgrades and customize the environment. 
+                Their level-ups give you new verbs as well, not just bigger numbers.
+                <br>
+                <br>
+                Meanwhile, player progression focuses more on specialization. Chef identities narrow your effectiveness, making you better at <i>specific</i> approaches at the cost of flexibility. 
+                This keeps you in a support role- you're empowering the NPCs' capabilities, and they're empowering you. You're also defining your own identity, rather than becoming the strongest 
+                character yourself.
+            </p>
+            <div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+
+    <div class="project-page" data-chapter="5" data-page="0">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h1>UX Demonstration</h1>
+            <video controls width="100%" class="embedded-video">
+    <source src="images/Movie_003.mp4" type="video/mp4"></video>
+        <h2>Script</h2>
+        <br><br>
+    <p><i>Hi hi, if you're reading this- this page isn't done. In the final portfolio, it will be JUST the video, I'll be narrating over it to give an idea of the user experience. Still, if you're
+    curious, I'll put the script I've got written down here. Above is a placeholder video of how things work in engine right now, missing some features from the description below. When I've added
+    them, I'll rerecord the video with the following narration! Me describing mechanics here is mostly for your sake, since some of them aren't implemented yet.</i></p>
+
+     <h3>Menu Tour</h3>
+    <p>
+    [Clip of character moving to stove]
+    To start cooking, you simply walk to one of your appliances in the kitchen. When you interact with a cooking appliance, it'll open the cooking menu. It's split into three panels, with two visible at a time.
+    <br><br>
+    [Zoom on Appliance Panel]
+    This displays the appliance they're using. [Show clip of the timing meter] At the top, a timing meter appears during cooking. If something varies in form, timing windows are color-coded. 
+    Some appliances have multiple utensils [Click arrow next to the frying pan, swap to pot], you swap them when you want to change cooking methods. The stove has an oven too [Mouse over oven, open animation]
+    Click it and you'll switch to baking [click, show baking tray, click back to stove for frying pan].
+<br><br>
+    [Zoom to the Technique button off to the left, not in video above]
+    This button expands when you select a recipe that has relevant techniques, rare as they are. [Click Fried Egg, show the technique panel expand to show 'Up, Down: Flip']
+<br><br>
+    [Zoom to the bottom of the panel, showing the fighter's chibi sprite, not in video above]
+    Over here is the mess hall window, it shows you a chibi character sprite of whoever's in the mess hall right now and can be fed. You can click them to see their profile.
+    When you cook, each ingredient gets added to your utensil one by one in an animation, if you add an ingredient a character likes or dislike- they'll react quickly with a heart
+    or sweat icon. If more than one's present here, they'll sometimes have little banter dialogue bubbles.
+<br><br>
+    [Zoom to the Cooking Panel]
+    The cook button displays the method group and specific technique. 
+    Below are three ribbons: essential ingredients accept ONLY the minimum ingredients to be considered your target recipe, so a fried egg recipe would only accept one fried egg. 
+    Optional ingredients are limited slots for extra ingredients, if an optional doesn't make sense to add- they're greyed out in your inventory.  
+    Additive ingredients are seasonings, like salt and pepper, or herbs. They work the same as optional ingredients, they just don't compete with them for slots and have less effects. You have more of these slots than optional ones.
+<br><br>
+    [Click slot, zoom to inventory panel]
+    Clicking a slot brings up the inventory, pretty standard so far. It won't let you drag ingredients that wouldn't make a valid recipe.
+<br><br>
+    [Click off inventory, bringing back the appliance panel. Zoom into recipe list. Unlike the video above, it has a button with a food pyramid icon and an arrow pointing up, alongside one with a clock icon]
+    The recipe list auto-greys out recipes you don't have ingredients for. Clicking these buttons brings up a dropdown, the first one brings up a list of food groups, the second time slots.
+    If you click, say, protein- it'll sort recipes in order of stacks of protein modifiers taking into account their ingredients too. If you click morning when you're sorting time slots, it'll bring
+    foods with a breakfast buff to the top.
+</p>
+
+<h3>Intended User Experience</h3>
+<p>
+    Here's the intended flow: The player wakes up, sees the fighter in the mess hall. 
+    They know protein boosts physical inspiration, so they sort by protein and morning time.
+    <br><br>
+    Two options stand out: Bagel and Lox versus Steak and Eggs. Bagel and Lox uses seafood—instant inspiration. 
+    Steak and Eggs uses meat and eggs, over-time and banked. It's a weekday, the fighter trains this afternoon. 
+    They choose Steak and Eggs for banked inspiration before training, but they decide they'll give make some
+    Bagel and Lox for her on the weekend.
+    <br><br>
+    They click the magnifying icon next to the recipe's name for the list of known optional ingredients, seems they can add more eggs.
+    It looks like while the recipe can accept any type of egg, it also accepts a pre-cooked fried egg. They remember the fighter likes
+    her eggs over-easy, so they cook them first. [Two fried eggs cooked, up down pressed each time to flip, space pressed to end cooking early]
+    <br><br>
+    They open her profile, her 'flavor palette' entry shows "Savory > Bitter = Sweet ??? Sour ??? Spicy", this means that if you add more flavors,
+    you get a bonus the closer you are to this order of their stacks. It's fine if some tastes aren't present, each one just gives its own bonus if it's in the correct spot.
+    The ingredients are already pretty savory. Savory gives more banked experience, but bitter increases over-time duration slightly.
+    <br><br>
+    They decide to add black pepper for a smidge of bitterness. They've added an uncooked cut of beef, two over-easy eggs, and black pepper.
+    <br><br>
+    They click cook, only timing window is for the steak to decide rarity. They don't know the fighter's preference, so they let it cook to well done.
+    <br><br>
+    Finally, the completion popup shows you the overall quality, flavor modifiers, and any other modifier on the final dish. You can mouse over them for a tooltip, or click
+    the magnifying glass on the dish's icon to go to an overview window. It has a tab to show you modifier by type, like food group, delivery method, conversion- or to show you Modifiers
+    by their ingredient sources, so modifiers from an egg will be grouped together, same with the second egg and the steak, as well as the black pepper.
+    <br><br>
+    Below that are the inspiration numbers. These are just total inspiration gained. If you mouse over one of the values, a dropdown appears showing you a breakdown of how much of it is general,
+    how much is martial, and whatever other type is there based on the ingredients you used.
+    <br><br>
+    Finally, it's time to deliver. When you hand the fighter her food, she might give a comment on one aspect that could be done better, or let you know about a craving for a recipe she likes. 
+    She thanks you for the dish, and lets you know that she likes her steak medium rare. Since you've seen that dialogue, her character profile updates to add that preference automatically.
+</p>
+<div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+    <div class="project-page" data-chapter="6" data-page="0">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h1>Design Challenge</h1>
+            <br>
+            <p>
+                How do I gradually introduce the complexity of the system, while maintaining narrative momentum and stakes, and also allowing for failure without frustration? The Stardew Valley player-centric calendar based freeform progression is good for a cozy atmosphere, 
+                but it wouldn't portray the other characters as ones with their own lives- nor as ones you're relying on as much as they're relying on you, nor does it allow for a proper narrative structure and growth.
+            </p>
+        </div class ="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+
+    <div class="project-page" data-chapter="6" data-page="1">
+        <div class="page-content">
+        <div class="scroll-shadow"></div>
+        <h2>Approach</h2>
+        <br>
+        <br>
+        <p>While I still want to maintain a calendar system, I've opted instead to have the narrative revolve around 'story arcs'. 
+        A good comparison is the persona games that still utilize their calendar system, but build up towards a deadline in which 
+        the player much overcome a gameplay challenge relevant to the current arc in the story.</p>
+
+        <h3>Structure</h3>
+        <p>As such, I switched to those deadline arcs as well. An arc like a raid on the settlement would provide you with structured goals, 
+        you would need your fighter and medic at certain levels to overcome it, for example.<br><br> 
+        Still, I had some issues with it. You either had to design those challenges as being very easily beatable unless you're trying to fail
+        (like in persona), or they would be frustrating. I opted to think for a way to have
+        the player somehow fail forward, and what I came up with was a time-loop narrative structure.</p>
+
+        <h3>Introduction</h3>
+        <p>
+        The game's tutorial is the guildmaster teaching you to fry an egg. Most players will just pick the recipe, press "cook" and move on, making a basic hard fried egg. 
+        The guildmaster'll approve, though mentioning they happen to personally like over-easy eggs. They'll give the player another egg, and inform them that if they press
+        up then down while cooking certain meals- they can flip them, and if they press space, they can end cooking early in the visible timing windows the player was just 
+        shown earlier (with runny being the first). The day ends, but the night is interrupted- an assassin attacks, the fighter is taken by surprise and is unable to save you. 
+        You loop back to the tutorial. The guildmaster doesn't seem to immediately believe the outlandish story if you opt to tell it then and there, but says they'll keep it 
+        in mind, they still prompt you to cook the egg since they haven't seen you do it yet. 
+        <br>
+        <br>
+        Now the player can apply their knowledge: if they cook the over-easy egg immediately, they gain bonus relationship points and unique dialogue. That night, your warning 
+        thwarts the assassination, the guildmaster and fighter believe you since you've demonstrated impossible knowledge. This teaches the core loop—knowledge persists across 
+        loops, and paying attention to preferences matters—while establishing narrative stakes in the first five minutes, the assassin warns their settlement won't survive the 
+        coming raid.
+        <br>
+        <br>
+        For a nice easter egg and quality of life, if a player starts a new game and cooks an over-easy egg from the start before the first loop, the guildmaster'll ask how the
+        player knew they liked them over-easy. The tutorial continues as normal if the player says it was a lucky guess, but if they choose to explain that they've lived the day
+        before, it'll skip the rest of the tutorial. It's unlikely a new player would trigger this, seeing as pressing down then up or pressing space early won't be telegraphed 
+        the first go around.
+        </p>
+
+        <h3>Progression</h3>
+        <p>
+            Failed attempts aren't meant to be punishing—they're diagnostic. The first loop sets a precedent that sometimes you might have to fail to know how to proceed.
+            If you over-level the fighter but neglect the medic, you stop the raid but the assassin's poison kills the fighter anyway. 
+            The loop resets, you discuss with guildmates, they give you information about what you need to prioritize. Your culinary inspiration and recipe knowledge persist, so each loop 
+            makes you stronger while teaching you the systems' interdependencies. Players who struggle spend more loops building culinary progression, naturally catching up to those comfortable
+            enough with the system to end up on the correct path the first time around intuitively. Cooking isn't your only path to progress either, while the raid has a defined deadline- the fighter 
+            can be sent on a hunt to take out an enemy scouting party, this delays the deadline that loop and gives you more time to develop. Future arcs will also vary in how they're solved- for example, 
+            if the player successfully stops the raid, infernal reinforcements arrive at the last moment to barely tip the scales in your favor, revealing that the guildmaster made a deal with a devil to 
+            ensure victory. This deepens the loop's mystery, why is it looping after specific individual deaths? it also introduces the next arc's challenge, and character- a mage and lawyer that'll spend 
+            their time in the guild studying how to get the guild out of the deal before it's time to pay- taking focus away from the fighter for a time... 
+        </p>
+        <div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+
+    <div class="project-page" data-chapter="6" data-page="2">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h2>Challenges to This Approach</h2>
+            <br><br>
+            <p>
+                Despite the benefits of the time loop in creating strong teaching opportunities and intrigue, it also creates narrative consistency challenges- primarily dialogue repetition.
+                To address this, the player character acknowledges in a partial meta-nod that they'll be passively working to recreate important conversations across loops "for the sake of the other characters." 
+                This narrative justification lets me prioritize new dialogue each loop while having a narratively consistent fallback when a character temporarily runs out of relevant unique dialogue, a time loop allows
+                you to fall back on generic dialogue while avoiding the issue of repeat lines being immersion breaking. The idea would be that your character's still having the same conversations, you're just not seeing them 
+                sometimes for your own sake as a player. 
+                <br><br>
+                Aside from that, there is also greater potential for plotholes- or difficulty creating meaningful stakes, for instance if there's cases of deception in the story we'll
+                have to always account for the player intentionally failing a loop to expose it. In my opinion, the extra thought needed to account for the ability is well worth the narrative reactivity, as long as things
+                aren't allowed to branch in a fashion that grows too complex. Since the loop's checkpoint 'moves up' after an arc, it means we can set those moments up with potential to overcome them in mind. Thankfully,
+                the player being a simple chef relying on the other characters makes their ability to throw themselves at a problem over and over less effective.
+            </p>
+
+            <h3>Escape Hatch</h3>
+            <p>
+                I've also written out an escape hatch if the loop structure becomes unsustainable at scale. A planned arc introduces a scientist studying your time loop, ultimately revealing that the loop was caused by their future self—going
+                back in time to create the paradox that enables their research, keeping characters alive as they remembered them. This gives me two paths forward: keep the loop if it remains valuable, or resolve it to raise stakes ("you're on your own now, decisions are permanent"). 
+                The choice depends on whether the loop continues serving the game's teaching and narrative needs as complexity scales. Obviously, the arc doesn't have to play out exactly like that, but it's a functional example for now. The core idea is that
+                the game can afford to test the time loop structure early on in development, and writing it out in the future if it's unlikely to scale can be an effective turning point in the plot rather than just a lost feature.
+            </p>
+
+            <div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+
+    <div class="project-page" data-chapter="7" data-page="0">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h1>Design Challenge</h1>
+            <br>
+            <p>
+                How do I create worldbuilding that serves multiple purposes- generating roleplay opportunities, supporting mechanical systems, and enabling compelling character arcs, and not just being lore for lore's sake?
+            </p>
+
+            <div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+
+    <div class="project-page" data-chapter="7" data-page="1">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h2>Approach</h2>
+            <br>
+            <br>
+            <p class ="starts-single-letter"><span class="single-letter-word">I</span> design cultures around internal tensions that create natural story hooks and character conflicts. When building a faction, god, or race, I start with a core tension or duality that makes perfect adherence to its ideals impossible. 
+                This creates space for complex characters who struggle with their culture's contradictions rather than simply representing it.
+            </p>
+
+            <h3>Disclaimer</h3>
+            <p>
+                I originally designed these elements for another game's launch, Chronicles of Meranthe, as a volunteer. It's a multiplayer game with enforced roleplay on the BYOND engine, averaging about 100-200 players during peak hours. 
+
+            I was asked to create a starting faction, god, and playable race with only a sentence that described the original concept of it being a nation of duality with shapeshifting assassins. The result was the nation of Aphros, their god Athelios, and the Faceless. Among the starting factions, this is among the 2 that are still thriving and being roleplayed 3 years after the game's launch.
+            <br><br>
+            As happy as I am with their presentation in Meranthe, I felt they would fit well in From The Hearth- and asked the owner of the game if I could use my writing for them in my own project, and got approval as long as I changed the names in the final release. I'll include links to the wiki pages, but reading them isn't necessary at all. I'll be describing how these 3 exist in From The Hearth exclusively going forwards. 
+            Here is the page for <a href="https://chronicles-of-eternia.com/lore/index.php?title=Athelios" target="_blank">Athelios</a>, the one for <a href="https://chronicles-of-eternia.com/lore/index.php?title=Aphros" target="_blank">Aphros</a>, and the one for <a href="https://mitadmissions.org/blogs/entry/parametric-cooking/" target="_blank">Faceless</a>.
+            </p>
+            
+            <div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+
+    <div class="project-page" data-chapter="7" data-page="2">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h2>Athelios, God of Duality</h2>
+            <br>
+            <br>
+            <p class ="starts-single-letter"><span class="single-letter-word">I</span> designed Athelios's faith to create inherent character conflict through theological structure. The core philosophy is that good must learn from evil to triumph- and that a complete life requires experiencing both sides of fundamental dualities rather than avoiding darkness entirely. His followers believe that leaving deception and cruelty as tools only your enemies can wield handicaps those fighting for prosperity. They believe that after they die, the worthy join Athelios as his council- providing him their opinions on whether the souls of the dead are irredeemable, or worthy of reincarnation.</p>
+            
+            <h3>Dogmata of The Devout</h3>
+            <p>
+                Their faith manifests through five tenets called the Dogmata of the Devout, arranged in an ouroboros cycle: 
+                <br><br><i>The Self</i> (live fully, explore both virtue and sin), 
+                <br><i>The Question</i> (When is a soul past the point of redemption? Philosophize and explore the answer.), 
+                <br><i>The Civilization</i> (maintain societal order), 
+                <br><i>The World</i> (cleanse cosmic corruption infesting reality), 
+                <br><i>The Beyond</i> (prepare your soul for the afterlife and either reincarnation, or your eventual role in Athelios's citadel).
+            </p>
+
+            <h3>Design Purpose of The Ouroboros Structure</h3>
+            <p>
+                The ouroboros structure means each tenet supports the next while undermining the previous. Strengthening The Self through varied experiences helps you explore The Question, but delving too deep into evil damages your readiness for The Beyond. A strong Civilization equipped to cleanse The World becomes less capable of exploring The Question if it suppresses darkness too effectively. Successfully cleansing The World prepares The Beyond, but crusades can exhaust The Civilization. The Beyond returns to The Self through rebirth.
+                <br><br>
+                This makes perfect adherence impossible by design—followers must constantly balance competing priorities, creating natural internal conflict without requiring external persecution. Picking an aspect a follower struggles with, or excels at (potentially a little too much) is a good way to start writing a character with pre-packaged drama and potential for growth, or falls.
+            </p>
+            <div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+
+    <div class="project-page" data-chapter="7" data-page="3">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h2>Aphros, Ad Astra Per Umbra</h2>
+            <br>
+            <br>
+            <p class ="starts-single-letter"><span class="single-letter-word">I</span> built Aphros's governance directly around the faith, as it's a theocracy. This was through two political factions that both complement and rival each other. 
+            Astra typically handles diplomacy, public culture, holy warfare, and spreading the faith. Umbra manages espionage, sanctioned occultism, and clandestine operations. Both acknowledge each other's roles openly—citizens know Umbra 
+            exists and operates in the shadows, and Umbra knows Astra monitors them to ensure they don't stray too far into darkness. <br><br>
+        
+            The people of Aphros also use public perception of their parties to their advantage. Astrans wear the face of knights in shining armor, but that doesn't mean they'll never lie- just that people don't expect it. Umbrans wear the faces of harsh dictators, 
+            but they're ultimately working to just ends as well.
+            </p>
+
+            <h3>Culture</h3>
+            <p>
+                Cultural practices reflect their faith. Masquerade balls serve dual purposes: genuine celebrations of art and socializing while providing natural cover for information extraction. The architecture blends imposing dark gothic elements with lighter marble and stone,
+                and citizens typically wear dress in monochrome- black and white with occasional accents to reflect duality and leave room for their own individuality.
+
+                <br><br>
+                For From The Hearth, there'll be various pieces of lore detailing just how intrinsically Aphrosi craftiness is tied to their culture. There's an in-setting idiom "When in Aphros, drink as the host does" which serves dual-meanings. Some believe it's a simple call
+                to adopt the culture of where you're visiting- though quite a few realize that it's literal advice. The origin of the phrase is that hosts of balls in Aphros always know which drinks are the lightest, guests are more likely to take heavier glasses and spill the most secrets.
+                <br><br>
+                Beyond that, the nation's love for mental games and their monochromatic theming make them the in-setting origin for the game of chess, as well as the classic butler and maid. The former of which is played straight, the latter began as an attempt to create a cultural export
+                that allows them to easily place their spies within the circles of trust of the rich and powerful. Aphrosi servants are the best of the best, after all.
+            </p>
+
+            <h3>Design Purpose of their Dual Natures</h3>
+            <p>
+                Once again, a wealth of plothooks, but more importantly in this case is the ability to play with player perception. Aphros' parties have a strong visual aesthetic that carry with them existing tropes. They'll subvert the tropes
+                of their design, and it will be for a lot of them- a conscious decision.<br><br> When some Aphrosi NPCs arrive later in the story to build a nearby friendly... but competitive settlement, an Astran and Umbran knight will cause a scene, one 
+                where it seems that the Astran is voicing suspicion over the Umbran's allegiances and legality. A series of attempted espionage attempts on the guild will lead back to Aphrosi involvement. If the player suspects the Umbran, the Astran 
+                plays 'good cop', offering to help while extracting as much information as they can and potentially leading them down a wrong path. Even if the player attempts to confront the Umbran, they'll simply play them against the Astran as well.
+                The best outcome involves collecting enough evidence (through dialogue and side quest hunts) to discover that they're coordinating the effort, the scene they caused was staged, the Astran wished to set themselves up as a kind and just individual
+                for people to feel comfortable voicing their concerns to them. The Umbran wanted to set themselves up as shady, and potentially an opportunist, all so that anyone criminally inclined within the settlement would potentially feel at ease spilling
+                their own secrets to a potential employer. 
+            </p>
+            <div class="scroll-shadow-bottom"></div>
+        </div>
+    </div>
+    <div class="project-page" data-chapter="7" data-page="4">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h2>The Faceless, Many or None?</h2>
+            <br>
+            <br>
+            <p>My approach to designing fantasy races is typically having them be humans that were modified in some way. With Faceless, they're the product of a ritual that Athelios taught their followers to allow them to shapeshift, copying someone's identity or creating a new one altogether. Unlike other races in the setting, humans can still become Faceless in their lifespan if the Aphrosi government decides to perform the ritual on them. This creates two types, Made Faceless and Born Faceless. Those 'promoted' via ritual, and those born of a made faceless- being lucky enough, or unlucky enough to inherit the same abilities.
+            After all, Faceless sometimes struggle with their identities- when two compete for importance, which one is real? Some struggle to find a sense of identity at all, and abandon it altogether.
+            </p>       
+
+            <h3>Born or Made?</h3>
+            <p>
+                The government values made faceless, but fears the spread of born faceless. As such, even though they make their best spies- they're also strictly monitored. Affairs are dissuaded, potential children are monitored for the possibility of having become a Faceless in order to be raised with Aphrosi loyalty in mind, fearing that if born faceless become too common and spread out- other nations will threaten Aphros' monopoly on them.
+                Despite their insistence that faceless need to be controlled and monitored, even those that actively monitor them don't want them to suffer, few see them as purely tools- especially when they knew most as people.
+            </p>
+
+            <h3>Loyalty or Resentment?</h3>
+            <p>
+                This mix of clearly immoral authoritarianism, but some level of reverence to the ones the nation wishes to control creates another interesting duality. Made faceless are typically extremely loyal, being rewarded for it and entrusted with the transformation. Born faceless may grow to resent their lot in life, having never asked for the restrictions the nation has placed on them. Both struggle with crises of identity. They're an open secret- with Aphrosi officials often joking that people will blame the faceless for any political incident when there's so few of them to publicly downplay their utility, while secretly fearing other nations getting their hands on them.</p>
+            <div class="scroll-shadow-bottom"></div>    
+        </div>
+    </div>
+    <div class="project-page" data-chapter="7" data-page="5">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h2>Adapting for From The Hearth</h2>
+            <br>
+            <br>
+            <p>These elements serve multiple design purposes in the cooking RPG aspect of the game:</p>       
+
+            <h3>Mechanical Integration</h3>
+            <p>
+                <i>Aphrosi Cuisine</i> - buffs sweet & sour and bitter & sweet flavor combinations, reflecting their cultural obsession with duality and balance.
+                <br><br>
+                <i>Predictable Preference</i> - Characters from Aphros prefer dishes marked with the "lavish" modifier and alcoholic beverages.
+                <br><br>
+                <i>Basic Faceless Spying Mechanics</i> - The assassin in the first arc is a born faceless that resents their home nation, during times where certain characters are busy according to their schedule, they'll still show up to the mess hall. In these situations, it's the faceless assassin in disguise, spying on the guild. If you repeatedly talk to them, it triggers a scene where they believe you've caught onto them and escape- this rewards you by delaying the raid deadline by a few days.
+            </p>
+
+            <h3>Narrative Integration</h3>
+            <p>
+                <i>Incentivizes Attention to Detail</i> - On the previously mentioned assassin spying events,  you can notice this if you pay attention to character schedules, 
+                or notice that the character suddenly has different food preferences or responds very negatively to Aphrosi dishes. It ties in their race, history, and ability
+                to spot them directly to the mechanics and rewards paying attention to both your guild members and the lore.
+                <br><br>
+                <i>Relevance across arcs</i> - The lawyer/mage hired in arc two is Aphrosi. Players will initially view them with suspicion, given their previous experience of the assassin being negative- 
+                so it's a good opportunity to provide an immediate foil with a character you grow to like, showcasing the good and the bad of Aphros. 
+                <br><br>
+                <i>Opportunity for New Events</i> - A later arc involves an Aphrosi character wanting to host a masquerade ball for the settlement, you'll be tasked with preparing dishes that serve both genuine hospitality 
+                and strategic purposes, like alcohol to loosen people's tongues.
+            </p>
+
+            <h3>Why This Works</h3>
+            <p>
+                The worldbuilding isn't decorative- it's helped me create mechanical variety and direct my design decisions, and created usable plot-hooks to create sympathetic antagonists, cultural prejudice to overcome, characters struggling with their own traditions, and provides clear character motivations rooted in believable cultural systems. The internal tensions built into Aphros naturally produce story conflicts and moral ambiguity hopefully without feeling forced or arbitrary.
+                Additionally, tying mechanics like cuisine to the lore- and having a call to attention like Faceless presence should hopefully boost immersion and intrigue.
+            </p>
+            <div class="scroll-shadow-bottom"></div>    
+        </div>
+    </div>
+    <div class="project-page" data-chapter="8" data-page="0">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h1>Design Challenge</h1>
+            <br>
+            <p>How do I create character arcs that feel responsive to player choices without branching into unsustainable complexity? Players should feel like their cooking, dialogue and leveling decisions affect characters' growth, but I can't write entirely separate storylines for every possible outcome.</p>
+            <div class="scroll-shadow-bottom"></div>    
+        </div>
+    </div>
+
+    <div class="project-page" data-chapter="8" data-page="1">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h2>Approach</h2>
+            <br>
+            <br>
+            <p class ="starts-single-letter"><span class="single-letter-word">I</span> design character arcs around a core philosophical tension that maps to mechanical and dialogue decisions players are already making. The arc's conclusion reflects those accumulated choices through small but meaningful splits that provide a small mechanical and narrative difference persisting across loops.</p>
+
+            <h3>Example: Rosetta's Arc</h3>
+            <p>
+                Rosetta is the fighter- a noble from Eudaina (a nation valuing arts and magic) who funded the settlement expedition but doesn't quite fit aristocratic life. Her family possesses a "Generational Arte" (unique magic, inherited and is made stronger by being known by as few as possible), Rosetta has poor control over hers—currently she can only summon a single sword.
+            <br><br>
+                <i>The Core Conflict:</i> The first arc's assassin uses the appearance of Rosetta's childhood friend, catching her off-guard during the attack. Through investigation, players discover her friend is actually leading the raiders- he cut ties with Rosetta years ago as his family's wealth deteriorated, eventually becoming a thief who resents nobility and gathered others dissatisfied with established nations to seize the frontier settlement for themselves.
+<br><br>
+                <i>The Tension:</i> Should Rosetta embrace her inheritance to protect those she cares about, or make an effort to succeed on personal strength and tenacity alone?
+<br><br>
+                <i>Mechanical Integration:</i> The player influences Rosetta's path through cooking choices and leveling decisions, allowing her to gain secret points to one of two outcomes:
+<br><br>
+1. Feeding her lavish meals triggers dialogue where she questions whether it's acceptable to indulge in noble comforts or if she should stay on everyone's level—your response adds points towards one outcome.
+<br><br>
+2. How heavily you level Rosetta mechanically drastically affects the amount of points for either outcome in the final battle. If she's a slightly lower level than the target for success, she gains a lot of points towards inheritance, and if she opts for it then you can still succeed the raid with her being underleveled from the power boost she gains from it. If she's overleveled, she gains a lot of points towards relying on her own strength. 
+<br><br>
+3. These choices accumulate across the arc without explicitly announcing which path you're on.
+            </p>
+            
+            <div class="scroll-shadow-bottom"></div>    
+        </div>
+    </div>
+    <div class="project-page" data-chapter="8" data-page="1">
+        <div class="page-content">
+            <div class="scroll-shadow"></div>
+            <h2>The Branching Paths:</h2>
+            <br>
+            <br>
+            <p><i>Inheritance Path:</i> Rosetta believes that refusing her advantages doesn't help anyone. 
+            In the final confrontation, she properly wields her arte— visually represented by summoning and
+            commanding additional swords to ward off more enemies. This makes Rosetta more powerful overall mechanically in terms of success rate, 
+            but in a future arc where her friend is redeemable and recruitable- he's weaker and obtaining him
+            is more challenging. This also gives her a preference for lavish meals.</p>
+            <br><br>
+            <p>
+            <i>Tenacity Path:</i>Rosetta refuses to rely on her inherited power, proving herself through hard-won skill, out of a desire to truly reconnect with her friend. This requires significantly higher leveling to succeed in the raid. Rosetta doesn't gain any buff from her Arte going forwards, but when her friend is redeemed and recruited, he becomes more powerful and the two gain synergy bonuses when working together. This also gives her a distaste for lavish meals, where she'll let you know she'd rather not enjoy excess when everyone's working just as hard.
+            </p>
+            
+            <h3>Why This Works</h3>
+            <p>The variation is meaningful but contained. Both paths maintain Rosetta's core characterization (someone struggling with privilege and belonging) and reach the same narrative beats (confrontation, friend's confrontation, raid resolution). The difference is <i>how</i> she reaches those beats and what strengths she develops.
+            <br><br>
+            Players feel agency because their cooking and leveling choices—actions they were already making—shaped her growth. But I'm not writing two entirely separate storylines or maintaining incompatible character states. The fork happens at the climactic moment and affects mechanical outcomes (Rosetta's power vs. friend's power, individual strength vs. synergy) in ways that feel like natural consequences of how you've been supporting her throughout the arc.
+            <br><br>
+            The childhood friend's motivation (resentment of nobility, desire to build something new on the frontier) also ties into the Aphros worldbuilding—he found the Faceless assassin as a fellow runaway, creating sympathy for both antagonists while connecting the personal story to the larger world's tensions.
+            </p>
+            <div class="scroll-shadow-bottom"></div>    
+        </div>
+    </div>
+</div>
+
+
+<script src="navigation.js"></script>
+</body>
+</html>
