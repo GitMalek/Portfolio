@@ -305,6 +305,11 @@ function populateSelect(selectElement, options, valueKey = null) {
     }
 }
 
+// Hell function
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 // Update the display based on current selections
 function updateDisplay() {
     const group = groupSelect.value;
@@ -328,7 +333,7 @@ function updateDisplay() {
 
     // sprite path
     let extension = (type === 'glowshroom') ? 'gif' : 'png';
-    ingredientSprite.src = `images/ingredients/${subgroup}-${type}-${form}.${extension}`;
+ingredientSprite.src = `images/ingredients/${capitalize(subgroup)}-${capitalize(type)}-${capitalize(form)}.png`;
 
     // info
     ingredientInfo.innerHTML = `
