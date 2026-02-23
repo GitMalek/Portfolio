@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From The Hearth</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">About Me</a>
+        <a href="projects.html">Design Projects</a>
+        <a href="skills.html">Other Skills</a>
+    </nav>
+
+    <!-- Topic Tabs -->
+    <div class="topic-tabs">
+        <button class="topic-tab active" data-chapter="0">Overview</button>
+        <button class="topic-tab" data-chapter="1">Core Systems</button>
+        <button class="topic-tab" data-chapter="2">Progression</button>
+        <button class="topic-tab" data-chapter="3">UX Design</button>
+        <button class="topic-tab" data-chapter="4">Narrative</button>
+    </div>
+
+    <!-- Project Pages Container -->
+    <div class="project-container">
+        <!-- Topic 0: Overview -->
+        <div class="project-page active" data-chapter="0" data-page="0">
+            <div class="page-content">
+                <div class="scroll-shadow"></div>
+
+                <h1>From The Hearth</h1>
+                <p class="starts-single-letter"><span class="single-letter-word">A</span> fantasy cooking RPG! My
+                    current passion project. You're the newly hired chef for a frontier guild; your meals help your
+                    guildmates grow their skills and as people, as you all protect a fragile peace and build something
+                    new together.</p>
+
+                <br><br>
+                <h2>The Core Loop</h2>
+                <br><br>
+                <p>You cook tailored meals for a defined cast of characters. They need different <i>types</i> of
+                    inspiration based on their roles. the fighter needs martial, the bard needs artistic. Your choice of
+                    dish, ingredients, technique, and how you've decorated the guild contrasted with their personal
+                    tastes determines what type of inspiration they gain and how much.</p>
+
+                <p>The dish you make to cheer someone up should be different from their usual breakfast. Players who pay
+                    attention to variety and individual preferences both progress faster, and grow deeper relationships
+                    and learn more about their favorite characters.</p>
+
+                <img src="images/Gameplay-loop.png" alt="Core gameplay loop diagram"
+                    style="max-width: 100%; margin: 1rem 0;">
+
+                <br><br>
+                <h2>Design Philosophy</h2>
+                <br><br>
+                <p><b>Thoughtful decisions over optimization.</b> There can be no single "best" recipe. A dish's
+                    effectiveness depends on who's eating it, what their schedule looks like, time of day, the weather,
+                    and their mood.</p>
+
+                <p><b>Context sensitivity.</b> A fighter needs martial inspiration, which they typically get from
+                    protein. A character that's going to train soon might benefit more from a hearty egg dish that banks
+                    inspiration for them, as opposed to getting an instant kick from seafood.</p>
+
+                <p><b>Social gameplay loop.</b> You don't become the strongest person in the guild, you remain a chef
+                    who empowers others. The fighter, medic, bard, and carpenter grow stronger and unlock new
+                    capabilities, and everyone relies on each other.</p>
+
+                <div class="scroll-shadow-bottom"></div>
+            </div>
+        </div>
+
+        <!-- Topic 1: Core Systems -->
+        <div class="project-page" data-chapter="1" data-page="0">
+            <div class="page-content">
+                <div class="scroll-shadow"></div>
+
+                <h1>Core Systems</h1>
+                <p>If every dish just provided generic buffs, players would optimize to a single recipe and repeat it
+                    endlessly. How do you make a reward system where the "best" dish changes based on who you're cooking
+                    for and what they're generally doing? How do I incentivize variety and thoughtfulness rather than
+                    repetition?<br><br>
+                    Buffs and flat bonuses can still exist, but the <i>core</i> incentive for cooking has to be one that
+                    ties into every other aspect of the game, being context sensitive on a character-by-character basis
+                    <i>AND</i> other external circumstances, such as schedule.
+                </p>
+
+                <br><br>
+                <h2>Inspiration Economy</h2>
+                <br><br>
+                <div class="thumbnail-right">
+                    <img src="images/Inspiration Type Icons.png" alt="Inspiration type icons">
+                    <div class="caption">Inspiration types: General, Culinary, Martial, Artistic, Medicinal, Crafting
+                    </div>
+                </div>
+                <p>Progression is structured around <i>inspiration</i>, a resource similar to Runescape's skill-specific
+                    experience points. Different characters need different types- martial for the fighter, artistic for
+                    the bard. Most food generate pools of <i>"General"</i> inspiration by default, and ingredients
+                    convert portions of that pool into specific types during cooking. Inspiration is spent on level-ups,
+                    perks, abilities, and purchasing items from characters like the carpenter.</p>
+
+                <p>To add depth beyond "feed Martial-based food to the fighter," inspiration has three delivery methods:
+                </p>
+
+                <img src="images/Inspiration Delivery Methods.png" alt="Inspiration Delivery Methods"
+                    style="display: block; margin: 2rem auto; max-width: 100%;">
+                <div class="side-note">Characters with a faith could unlock a perk to convert divine inspiration to
+                    another type at 2:1. A cleric character is planned for the future that can improve it.</div>
+                <p>To keep the system forgiving rather than punishing, I added manual conversion. If a character gains
+                    an inspiration type they don't really use, you can convert it in a menu at a cost (3:1 for specific types, 2:1
+                    for general inspiration, as opposed to the 1:1 during the cooking process). This makes suboptimal
+                    cooking feel recoverable rather than wasted- maintaining the warm and cozy atmosphere, but also
+                    rewarding and encouraging thoughtfulness.<br><br>
+
+                    The option to do this is available at any time, so the player doesn't have to think about it until
+                    they need inspiration of a type they don't have. If a character's short of something they want to
+                    spend it on, they can just convert a type they can convert from a type they don't use often then and
+                    there. All inspiration is good, some is just more valuable for certain characters. There's room to
+                    introduce some perks that lower the conversion rates between two types down the line.</p>
+
+                <br><br>
+                <h2>Notation Crafting</h2>
+                <br><br>
+                <p>Most cooking systems are pure menu selection or execution minigames. Neither captures the
+                    thoughtfulness I'm trying to evoke from cooking- considering what ingredients you have, how to
+                    prepare them, and who they're for.</p>
+
+                <p>Effects are assigned at different levels of a hierarchy that defines what an ingredient 'is'. Each
+                    category can carry its own 'modifiers' that decide what the final item does. An ingredient is first
+                    defined by it's primary food group, like proteins. The group decides the list of available
+                    sub-categories, like meats or eggs... which then decide type, which decides form. Give it a try
+                    below to see how changing one 'element' of an ingredient affects it as a whole!</p>
+
+                <div class="ingredient-explorer">
+                    <div class="ingredient-display">
+                        <img src="" alt="Ingredient sprite" class="ingredient-sprite" id="ingredient-sprite">
+                        <span class="ingredient-name" id="ingredient-name">Whole Chicken Egg</span>
+                    </div>
+
+                    <div class="ingredient-dropdowns">
+                        <label>Group: <select id="food-group">
+                                <option value="protein">Protein</option>
+                                <option value="vegetable">Vegetable</option>
+                            </select></label>
+                        <label>Subgroup: <select id="subgroup"></select></label>
+                        <label>Type: <select id="type"></select></label>
+                        <label>Form: <select id="form"></select></label>
+                    </div>
+
+                    <div class="ingredient-info" id="ingredient-info"></div>
+                </div>
+
+                <p>I got the idea for this system when I read 
+                        <a href="https://mitadmissions.org/blogs/entry/parametric-cooking/" target="_blank">this paper on parametric cooking</a>
+. I call it notation-based crafting, because while the player never has to
+                    see it- <span class="tooltip-trigger" data-tooltip="tip1">I'm actually structuring ingredients
+                        like chemical formulas entirely on the backend.</span> This is exclusively for my convenience,
+                    because it makes it easier to keep track of what makes up a <span class="tooltip-trigger"
+                        data-tooltip="tip2">complex ingredient</span>,
+                    and also easily design recipes that can accept multiple parameters by
+                    <span class="tooltip-trigger" data-tooltip="tip3">writing out their notation.</span> This means no
+                    matter how detailed a player decides to make their cooking (whether they want to use a specific type
+                    of wheat to make flour for a cake dough, or simply uses something premade) the final dish will hold
+                    the modifiers of everything used to make it.
+                </p>
+                <br><br>
+                <h2>Modifiers</h2>
+                <br><br>
+                <p>The notation and inspiration systems create meaningful choices, but they're complex. How do I add
+                    depth for players who want to optimize without overwhelming those who just want to cook decent food?
+                    To me, the answer was modifiers. They follow a hierarchy of abstraction in which simple, high level
+                    decisions are the most important- with the hyper-specific modifiers being the most niche and only
+                    necessary for slight optimization, and deeper roleplay.</p>
+
+                <p>Modifiers attach to an 'element' of each food item (group, subgroup, type, form), and are structured
+                    into the following tiers of importance:</p>
+
+                <img src="images/Hierarchy of Abstraction.png" alt="Hierarchy of Abstraction"
+                    style="display: block; margin: 2rem auto; max-width: 100%;">
+
+                <p><b>Core modifiers</b> are unavoidable—you engage with them just by picking ingredients. A player
+                    thinking "proteins for the fighter" is already using the system decently well.</p>
+
+                <div class="side-note">Cereal's best served in the morning, tea tastes better on rainy
+                    days, sweets can help break someone out of a sad mood.</div>
+
+                <p><b>Supplementary modifiers</b> reward attention to taste profiles (Some characters have a preference
+                    for what tastes are dominant between savory, sweet, sour, bitter and spicy) and context like time of
+                    day, mood and weather. Ignoring them won't halt progression, but engaging with them grants a
+                    worthwhile bonus both to inspiration and developing relationships.</p>
+
+                <p><b>Specialization modifiers</b> are edge cases- form preferences (luxury food, runny eggs, etc.),
+                    cultural origin (some recipes carry modifiers that note them as signature dishes of places in the
+                    setting. Depending on a character's view of the nation, they may love or hate it!), perk bonuses
+                    (e.g., Picking up a baking perk that makes your baked goods increase relationship point gain). Optional depth
+                    for players who want to optimize or roleplay a specific chef identity. They typically focus entirely on relationship points which aren't necessary to progress.</p>
+
+                <p>The more specific your choices, the narrower the effect. Players can start with the food group;
+                    "proteins for the fighter" then learn "eggs before training, meat when she doesn't have an
+                    over-time buff active." Everything beyond that incrementally rewards deeper thinking, without
+                    punishing those yet to engage.</p>
+
+                <p>If you'd like to recontextualize the ingredients we went over by looking at their modifiers, feel
+                    free to use the ingredient explorer below!</p>
+
+                <div class="modifier-explorer">
+                    <div class="ingredient-display">
+                        <img src="" alt="Ingredient sprite" class="ingredient-sprite" id="modifier-ingredient-sprite">
+                        <span class="ingredient-name" id="modifier-ingredient-name">Whole Chicken Egg</span>
+                    </div>
+
+                    <div class="ingredient-dropdowns">
+                        <label>Group: <select id="modifier-food-group">
+                                <option value="protein">Protein</option>
+                                <option value="vegetable">Vegetable</option>
+                            </select></label>
+                        <label>Subgroup: <select id="modifier-subgroup"></select></label>
+                        <label>Type: <select id="modifier-type"></select></label>
+                        <label>Form: <select id="modifier-form"></select></label>
+                    </div>
+
+                    <div class="modifier-cards-container" id="modifier-cards-container">
+                    </div>
+                </div>
+
+                <div class="scroll-shadow-bottom"></div>
+            </div>
+            <span class="tooltip-box" id="tip1">A 'base ingredient' that can't be cooked is written like this:
+                P1(T1F1).<br><br> P means it's a protein, the first subgroup in the list of proteins is 'Egg', so
+                P1.<br><br> T1 just means 'first type in the list of eggs', which is chicken. F1 is the same, but for
+                form, which is whole. So this is one whole chicken egg.</span>
+            <span class="tooltip-box" id="tip2">A 'complex ingredient' is written out like this,
+                Frg1(Ht1(P1(T1F1)))(T1F1).<br><br> The only two new elements are Frg1 and Ht1. <br><br>In the notations,
+                cooking methods are 2 letters, complex ingredients are three.<br><br> This means you're looking at a
+                chicken egg with Ht1, heating 1, or 'frying' applied to it. It's a Frg, a Fried EgG.<br><br> If there's
+                optional ingredients, they're included in the notation separated by a +, so Ht1(P1(T1F1) + P1(T1F1)) is
+                the fried egg recipe, with an optional extra egg that's been added in, both correspond to the same
+                recipe, but the notation stores the extra info!</span>
+            <span class="tooltip-box" id="tip3">It's easy to make recipes that accept all sorts of different items. For
+                example, veggie stir-fry can be Ht1(V*), which means that as long as it's fried, any vegetable is valid!
+                A fried egg is Ht1(P1(T*F*)), as long as it's an egg that's fried- it accepts any type or form!<br><br>
+                Don't worry, all of this notation business is purely backend, it just makes recipe creation and
+                validation easy as pie. The player never has to see it.</span>
+        </div>
+
+        <!-- Topic 2: Progression -->
+        <div class="project-page" data-chapter="2" data-page="0">
+            <div class="page-content">
+                <div class="scroll-shadow"></div>
+                
+                <h1>Progression</h1>
+                <p>The core systems detail the most basic version of inspiration gain. You unlock new recipes, combine better ingredients and carry over their stronger modifiers into the final dish. Still, the incremental increases aren't enough to evoke the thoughtful and meaningful progression we're after.</p>
+
+                <p>NPCs need to feel like they're contributing to the growth of the guild and the survival of the settlement, not just eating food for a bigger number. The player also needs to progress in a way that doesn't overshadow the characters they're meant to lift up.</p>
+
+                <br><br>
+                <h2>Character Roles</h2>
+                <br><br>
+                <div class="character-row">
+                    <div class="character-card">
+                        <img src="images/characters/rosetta-chibi.png" alt="Rosetta">
+                        <div class="character-name">Rosetta</div>
+                        <div class="character-role">The Fighter</div>
+                    </div>
+                    <div class="character-card">
+                        <img src="images/characters/bakari-chibi.png" alt="Bakari">
+                        <div class="character-name">Bakari</div>
+                        <div class="character-role">The Medic</div>
+                    </div>
+                    <div class="character-card">
+                        <img src="images/characters/lia-chibi.png" alt="Lia">
+                        <div class="character-name">Lia</div>
+                        <div class="character-role">The Bard</div>
+                    </div>
+                    <div class="character-card">
+                        <img src="images/characters/ezra-chibi.png" alt="Ezra">
+                        <div class="character-name">Ezra</div>
+                        <div class="character-role">The Carpenter</div>
+                    </div>
+                </div>
+
+                <h3>The Fighter</h3>
+                <p>Your main source of ingredient progression. While the player is given a small daily budget they can spend on basic ingredients such as chicken eggs or beef, those ingredients can't compare to what the fighter can offer you when you send them on <b>hunts</b>.</p>
+
+                <div class="hunt-card">
+                    <div class="hunt-pin">
+                        <img src="images/pin.png" alt="Pin">
+                    </div>
+                    <div class="hunt-header">
+                        <div class="hunt-icon">
+                            <img src="images/deep-swamp.png" alt="Deep Swamp">
+                        </div>
+                        <div class="hunt-info">
+                            <div class="hunt-name">Deep Swamp</div>
+                            <div class="hunt-schedule">
+                                <img src="images/calendar.png" alt="Calendar" class="schedule-icon">
+                                <span>13th of Spring, Afternoon Slot</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hunt-tags">
+                        <span class="hunt-tag">Poison</span>
+                        <span class="hunt-tag">Beasts</span>
+                    </div>
+                    
+                    <div class="hunt-rewards">
+                        <div class="hunt-section-label">Potential Rewards:</div>
+                        <div class="reward-items">
+                            <div class="reward-item">
+                                <img src="images/ingredients/meat-basilisk-sirloin.png" alt="Basilisk Sirloin">
+                            </div>
+                            <div class="reward-item">
+                                <img src="images/ingredients/meat-basilisk-chuck.png" alt="Basilisk Chuck">
+                            </div>
+                            <div class="reward-item">
+                                <img src="images/ingredients/fungi-glowshroom-whole.gif" alt="Glowshroom">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hunt-party">
+                        <div class="hunt-section-label">Party:</div>
+                        <div class="party-slots">
+                            <div class="party-slot filled">
+                                <div class="party-portrait-container">
+                                    <img src="images/characters/rosetta-portrait.png" alt="Rosetta" class="party-portrait">
+                                    <div class="active-ability">
+                                        <img src="images/Enchant.png" alt="Enchant Active">
+                                    </div>
+                                </div>
+                                <div class="party-name">Rosetta</div>
+                            </div>
+                            <div class="party-slot empty">
+                                <div class="party-placeholder">+</div>
+                            </div>
+                            <div class="party-slot empty">
+                                <div class="party-placeholder">+</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hunt-rates">
+                        <div class="hunt-rate">
+                            <span class="rate-label">Success:</span>
+                            <span class="rate-value success">65%</span>
+                        </div>
+                        <div class="hunt-rate">
+                            <span class="rate-label">Injury:</span>
+                            <span class="rate-value danger">40%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p>You select the hunt you want to send her on, and schedule it on the calendar at a date and time slot. She'll be gone for the duration, and when she returns- you're informed whether the hunt was <i>successful</i>, and whether she was <i>injured</i>. It's possible to succeed with injury, or fail safely- both the success rate and the injury rate need to be managed! Levelling the fighter increases her success rate on hunts, and she can unlock abilities you can activate that boost it at the cost of some inspiration.</p>
+
+                <div class="ability-card">
+                    <div class="ability-cost">
+                        <img src="images/martial-inspiration.png" alt="Martial Inspiration">
+                        <span>200</span>
+                    </div>
+                    <div class="ability-icon">
+                        <img src="images/Enchant.png" alt="Enchantment">
+                    </div>
+                    <div class="ability-content">
+                        <div class="ability-name">Enchantment</div>
+                        <div class="ability-description">Increases success rate by <span class="ability-value">10%</span> for the next hunt.</div>
+                    </div>
+                </div>
+
+                <p>But what about the injury rate? If the fighter is injured, she'll be out of commission for training or hunts until treated. Well, another character handles that.</p>
+
+                <h3>The Medic</h3>
+                <p>The fighter's support. The more they've levelled up, the higher chance they'll cure the fighter's injury in a given time slot. They also unlock abilities that spend medicinal inspiration to lower injury rates on certain hunts. Some hunts have a high injury rate even IF they've got a high success rate, after all!</p>
+
+                <div class="ability-card">
+                    <div class="ability-cost">
+                        <img src="images/medicinal-inspiration.png" alt="Medicinal Inspiration">
+                        <span>200</span>
+                    </div>
+                    <div class="ability-icon">
+                        <img src="images/antivenom.png" alt="Antivenom">
+                    </div>
+                    <div class="ability-content">
+                        <div class="ability-name">Antivenom</div>
+                        <div class="ability-description">Decreases injury rate in hunts tagged with <span class="ability-value">poison</span> by <span class="ability-value">10%</span>.</div>
+                    </div>
+                </div>
+
+                <p>Though the fighter isn't the only one running with a support, you've got your partner in crime too!</p>
+
+                <h3>The Bard</h3>
+                <p>Your very own support. You can spend her artistic inspiration to unlock songs that buff inspiration gains, or boost conversions to certain types! She's a clear generalist, as while she primarily relies on artistic inspiration... if you want her to play a song that boosts martial inspiration gains, she'll need to spend some martial inspiration too!</p>
+
+                <div class="ability-card">
+                    <div class="ability-cost">
+                        <img src="images/artistic-inspiration.png" alt="Artistic Inspiration">
+                        <span>200</span>
+                        <img src="images/martial-inspiration.png" alt="Martial Inspiration">
+                        <span>100</span>
+                    </div>
+                    <div class="ability-icon">
+                        <img src="images/martial-ballad.png" alt="Martial Ballad">
+                    </div>
+                    <div class="ability-content">
+                        <div class="ability-name">Martial Ballad</div>
+                        <div class="ability-description">Multiplies martial inspiration gained from meals by <span class="ability-value">1.5x</span> for this time slot.</div>
+                    </div>
+                </div>
+
+                <p>Where you eat matters just as much as what you eat, while the bard improves the environment in the mess hall for a given time slot... we still want the opportunity to permanently improve it.</p>
+
+                <h3>The Carpenter</h3>
+                <p>In a sense, they're everyone's support. He can upgrade the guild stations that you don't see, like improving the training hall to make the Fighter's passive gains better... but mainly, you'll be buying furniture from him. Placing that furniture in the mess hall boosts gains for certain inspiration types. He's also a bit of a generalist though, to come up with a furniture design that relates to a specific inspiration type- he'll need some of that type alongside his usual crafting inspiration!</p>
+
+                <div class="ability-card">
+                    <div class="ability-cost">
+                        <img src="images/crafting-inspiration.png" alt="Crafting Inspiration">
+                        <span>200</span>
+                        <img src="images/martial-inspiration.png" alt="Martial Inspiration">
+                        <span>100</span>
+                    </div>
+                    <div class="ability-icon">
+                        <img src="images/archery-target.png" alt="Archery Target">
+                    </div>
+                    <div class="ability-content">
+                        <div class="ability-name">Archery Target</div>
+                        <div class="ability-description">Improves martial inspiration gained from meals by <span class="ability-value">50</span>.</div>
+                    </div>
+                </div>
+
+                <br><br>
+                <h2>Player Progression</h2>
+                <br><br>
+
+                <p>The player can eat and grow too! They gain culinary inspiration when they cook, and it funds two types of progression:</p>
+
+                <p><b>Skill Unlocks:</b> These are permanent improvements- new recipes, cooking method-specific modifiers, additional optional or additive ingredient slots. These are straight forward power increases.</p>
+
+                <p><b>Chef Identities:</b> These are specializations that sometimes come with trade-offs! They work a bit like Disco Elysium's thought cabinet, you can 'equip' these identities once you've unlocked them.</p>
+
+                <div class="identity-cards-row">
+                    <div class="identity-card">
+                        <div class="identity-icon">
+                            <img src="images/patisserie.png" alt="Patisserie">
+                        </div>
+                        <div class="identity-content">
+                            <div class="identity-name">Patisserie</div>
+                            <div class="identity-effects">
+                                <div class="identity-buff">+ Buff on all cake dishes</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="identity-card">
+                        <div class="identity-icon">
+                            <img src="images/vegetarian.png" alt="Vegetarian">
+                        </div>
+                        <div class="identity-content">
+                            <div class="identity-name">Vegetarian</div>
+                            <div class="identity-effects">
+                                <div class="identity-buff">+ More Protein stacks on fungi</div>
+                                <div class="identity-buff">+ More Inspiration from vegetables</div>
+                                <div class="identity-debuff">− Less Inspiration from meats</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="identity-card">
+                        <div class="identity-icon">
+                            <img src="images/aphrosi-cuisine.png" alt="Aphrosi Cuisine">
+                        </div>
+                        <div class="identity-content">
+                            <div class="identity-name">Aphrosi Cuisine</div>
+                            <div class="identity-effects">
+                                <div class="identity-buff">+ Buff on all recipes tagged Signature Dish: Aphros</div>
+                                <div class="identity-buff">+ Buff on dishes with an equal amount of Sweet and Sour, or Bitter and Sweet modifiers</div>
+                                <div class="identity-debuff">− Less inspiration on all recipes tagged Signature Dish: Eudaina</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br><br>
+                <h2>Horizontal Vs. Linear</h2>
+                <br><br>
+
+                <p>If you'll notice, progression on the player's side is mostly horizontal. The fighter and medic follow linear paths- you help them become better at their jobs, they evolve on their own terms. The bard and carpenter work closer to you, so they offer choices- which songs to unlock, which furniture to prioritize.</p>
+
+                <p>NPC progression unlocks new verbs, not just bigger numbers. The fighter opens your ingredient list, the medic manages risk, the bard amplifies your cooking, the carpenter provides permanent upgrades. You empower them, they empower you.</p>
+                
+                <div class="scroll-shadow-bottom"></div>
+            </div>
+        </div>
+
+        <!-- Topic 3: UX Design -->
+        <div class="project-page" data-chapter="3" data-page="0">
+            <div class="page-content">
+                <div class="scroll-shadow"></div>
+                <h1>UX Demonstration</h1>
+                <video controls width="100%" class="embedded-video">
+                    <source src="images/Movie_003.mp4" type="video/mp4">
+                </video>
+                <h2>Script</h2>
+                <br><br>
+                <p><i>Hi hi, if you're reading this- this page isn't done. In the final portfolio, it will be JUST the
+                        video, I'll be narrating over it to give an idea of the user experience. Still, if you're
+                        curious, I'll put the script I've got written down here. Above is a placeholder video of how
+                        things work in engine right now, missing some features from the description below. When I've
+                        added them, I'll rerecord the video with the following narration! Me describing mechanics here is
+                        mostly for your sake, since some of them aren't implemented yet.</i></p>
+
+                <h3>Menu Tour</h3>
+                <p>
+                    [Clip of character moving to stove]
+                    To start cooking, you simply walk to one of your appliances in the kitchen. When you interact with a
+                    cooking appliance, it'll open the cooking menu. It's split into three panels, with two visible at a
+                    time.
+                    <br><br>
+                    [Zoom on Appliance Panel]
+                    This displays the appliance they're using. [Show clip of the timing meter] At the top, a timing
+                    meter appears during cooking. If something varies in form, timing windows are color-coded.
+                    Some appliances have multiple utensils [Click arrow next to the frying pan, swap to pot], you swap
+                    them when you want to change cooking methods. The stove has an oven too [Mouse over oven, open
+                    animation]
+                    Click it and you'll switch to baking [click, show baking tray, click back to stove for frying pan].
+                    <br><br>
+                    [Zoom to the Technique button off to the left, not in video above]
+                    This button expands when you select a recipe that has relevant techniques, rare as they are. [Click
+                    Fried Egg, show the technique panel expand to show 'Up, Down: Flip']
+                    <br><br>
+                    [Zoom to the bottom of the panel, showing the fighter's chibi sprite, not in video above]
+                    Over here is the mess hall window, it shows you a chibi character sprite of whoever's in the mess
+                    hall right now and can be fed. You can click them to see their profile.
+                    When you cook, each ingredient gets added to your utensil one by one in an animation, if you add an
+                    ingredient a character likes or dislike- they'll react quickly with a heart
+                    or sweat icon. If more than one's present here, they'll sometimes have little banter dialogue
+                    bubbles.
+                    <br><br>
+                    [Zoom to the Cooking Panel]
+                    The cook button displays the method group and specific technique.
+                    Below are three ribbons: essential ingredients accept ONLY the minimum ingredients to be considered
+                    your target recipe, so a fried egg recipe would only accept one fried egg.
+                    Optional ingredients are limited slots for extra ingredients, if an optional doesn't make sense to
+                    add- they're greyed out in your inventory.
+                    Additive ingredients are seasonings, like salt and pepper, or herbs. They work the same as optional
+                    ingredients, they just don't compete with them for slots and have less effects. You have more of
+                    these slots than optional ones.
+                    <br><br>
+                    [Click slot, zoom to inventory panel]
+                    Clicking a slot brings up the inventory, pretty standard so far. It won't let you drag ingredients
+                    that wouldn't make a valid recipe.
+                    <br><br>
+                    [Click off inventory, bringing back the appliance panel. Zoom into recipe list. Unlike the video
+                    above, it has a button with a food pyramid icon and an arrow pointing up, alongside one with a clock
+                    icon]
+                    The recipe list auto-greys out recipes you don't have ingredients for. Clicking these buttons brings
+                    up a dropdown, the first one brings up a list of food groups, the second time slots.
+                    If you click, say, protein- it'll sort recipes in order of stacks of protein modifiers taking into
+                    account their ingredients too. If you click morning when you're sorting time slots, it'll bring
+                    foods with a breakfast buff to the top.
+                </p>
+
+                <h3>Intended User Experience</h3>
+                <p>
+                    Here's the intended flow: The player wakes up, sees the fighter in the mess hall.
+                    They know protein boosts physical inspiration, so they sort by protein and morning time.
+                    <br><br>
+                    Two options stand out: Bagel and Lox versus Steak and Eggs. Bagel and Lox uses seafood—instant
+                    inspiration.
+                    Steak and Eggs uses meat and eggs, over-time and banked. It's a weekday, the fighter trains this
+                    afternoon.
+                    They choose Steak and Eggs for banked inspiration before training, but they decide they'll give make
+                    some
+                    Bagel and Lox for her on the weekend.
+                    <br><br>
+                    They click the magnifying icon next to the recipe's name for the list of known optional ingredients,
+                    seems they can add more eggs.
+                    It looks like while the recipe can accept any type of egg, it also accepts a pre-cooked fried egg.
+                    They remember the fighter likes
+                    her eggs over-easy, so they cook them first. [Two fried eggs cooked, up down pressed each time to
+                    flip, space pressed to end cooking early]
+                    <br><br>
+                    They open her profile, her 'flavor palette' entry shows "Savory > Bitter = Sweet ??? Sour ???
+                    Spicy", this means that if you add more flavors,
+                    you get a bonus the closer you are to this order of their stacks. It's fine if some tastes aren't
+                    present, each one just gives its own bonus if it's in the correct spot.
+                    The ingredients are already pretty savory. Savory gives more banked experience, but bitter increases
+                    over-time duration slightly.
+                    <br><br>
+                    They decide to add black pepper for a smidge of bitterness. They've added an uncooked cut of beef,
+                    two over-easy eggs, and black pepper.
+                    <br><br>
+                    They click cook, only timing window is for the steak to decide rarity. They don't know the fighter's
+                    preference, so they let it cook to well done.
+                    <br><br>
+                    Finally, the completion popup shows you the overall quality, flavor modifiers, and any other
+                    modifier on the final dish. You can mouse over them for a tooltip, or click
+                    the magnifying glass on the dish's icon to go to an overview window. It has a tab to show you
+                    modifier by type, like food group, delivery method, conversion- or to show you Modifiers
+                    by their ingredient sources, so modifiers from an egg will be grouped together, same with the second
+                    egg and the steak, as well as the black pepper.
+                    <br><br>
+                    Below that are the inspiration numbers. These are just total inspiration gained. If you mouse over
+                    one of the values, a dropdown appears showing you a breakdown of how much of it is general,
+                    how much is martial, and whatever other type is there based on the ingredients you used.
+                    <br><br>
+                    Finally, it's time to deliver. When you hand the fighter her food, she might give a comment on one
+                    aspect that could be done better, or let you know about a craving for a recipe she likes.
+                    She thanks you for the dish, and lets you know that she likes her steak medium rare. Since you've
+                    seen that dialogue, her character profile updates to add that preference automatically.
+                </p>
+                <div class="scroll-shadow-bottom"></div>
+            </div>
+        </div>
+
+        <!-- Topic 4: Narrative -->
+        <div class="project-page" data-chapter="4" data-page="0">
+            <div class="page-content">
+                <div class="scroll-shadow"></div>
+                
+                <h1>Narrative Design</h1>
+                <p>The Stardew Valley style player-centric calendar with freeform progression works well for a cozy atmosphere, but it wouldn't portray the other characters as ones with their own lives, nor as ones you're relying on as much as they're relying on you. I needed a structure that gradually introduces the complexity of the system while maintaining narrative momentum and stakes, and also allowing for failure without frustration.</p>
+
+                <br><br>
+                <h2>Structure</h2>
+                <br><br>
+                <p>While I still want to maintain a calendar system, I've opted to have the narrative revolve around story arcs. A good comparison is the Persona games that still utilize their calendar system, but build up towards a deadline in which the player must overcome a gameplay challenge relevant to the current arc in the story.</p>
+
+                <p>An arc like a raid on the settlement would provide you with structured goals. You would need your fighter and medic at certain levels to overcome it, for example. Still, I had some issues with it. You either had to design those challenges as being very easily beatable unless you're trying to fail (like in Persona), or they would be frustrating. I opted to think of a way to have the player fail forward, and what I came up with was a time loop narrative structure.</p>
+
+                <br><br>
+                <h2>Introduction</h2>
+                <br><br>
+                <p>The game's tutorial is the guildmaster teaching you to fry an egg. Most players will just pick the recipe, press "cook" and move on, making a basic hard fried egg. The guildmaster will approve, though mentioning they happen to personally like over-easy eggs. They'll give the player another egg, and inform them that if they press up then down while cooking certain meals, they can flip them, and if they press space, they can end cooking early in the visible timing windows.</p>
+
+                <p>The day ends, but the night is interrupted. An assassin attacks, the fighter is taken by surprise and is unable to save you. You loop back to the tutorial. The guildmaster doesn't seem to immediately believe the outlandish story if you opt to tell it then and there, but says they'll keep it in mind.</p>
+
+                <p>Now the player can apply their knowledge: if they cook the over-easy egg immediately, they gain bonus relationship points and unique dialogue. That night, your warning thwarts the assassination, the guildmaster and fighter believe you since you've demonstrated impossible knowledge. This teaches the core loop in the first five minutes. Knowledge persists across loops, and paying attention to preferences matters.</p>
+
+                <p>Also, as a useful easter egg, if someone starts a new save and cooks an over-easy egg from the get-go despite not being told how to, they're given a dialogue option to skip this first loop- they've clearly gone through it already!</p>
+
+                <br><br>
+                <h2>Progression</h2>
+                <br><br>
+                <p>The goal is to make failed attempts diagnostic rather than punishing. The first loop sets a precedent that sometimes you might have to fail to know how to proceed. If you over-level the fighter but neglect the medic, you stop the raid but the assassin's poison kills the fighter anyway. The loop resets, you discuss with guildmates, they give you information about what you need to prioritize.</p>
+
+                <p>Your culinary inspiration and recipe knowledge persist, so each loop makes you stronger while teaching you the systems' interdependencies. Players who struggle spend more loops building culinary progression, naturally catching up to those comfortable enough with the system to end up on the correct path the first time around intuitively.</p>
+
+                <p>As a developer-side benefit to this structure, the game's first arc can release as a vertical slice with future arcs dropping in content updates. Since the player character is the key to the time loop, it makes sense they'd be restricted to just a mess hall for the first arc!</p>
+
+                <br><br>
+                <h2>Character Arcs</h2>
+                <br><br>
+                <p>These story arcs are character-focused. Players should feel like their cooking, dialogue and leveling decisions affect characters' growth, but I can't write entirely separate storylines for every possible outcome. The solution is to design character arcs around a core philosophical tension that maps to mechanical and dialogue decisions players are already making. The arc's conclusion reflects those accumulated choices through small but meaningful splits that provide a mechanical and narrative difference persisting across loops.</p>
+
+                <br><br>
+                <h3>Example: Rosetta's Arc</h3>
+                <div class="character-spotlight">
+                    <img src="images/characters/rosetta-portrait.png" alt="Rosetta">
+                    <div class="character-spotlight-caption">Rosetta, the Fighter</div>
+                </div>
+                <p>Rosetta is the fighter, a noble from Eudaina (a nation valuing arts and magic) who funded the settlement expedition but doesn't quite fit aristocratic life. Her family possesses a "Generational Arte," a unique inherited magic made stronger by being known by as few as possible. Rosetta has poor control over hers. Currently she can only summon a single sword.</p>
+
+                <p>The first arc's assassin uses the appearance of Rosetta's childhood friend, catching her off guard during the attack. Through investigation, players discover her friend is actually leading the raiders. He cut ties with Rosetta years ago as his family's wealth deteriorated, eventually becoming a thief who resents nobility.</p>
+
+                <p>Should Rosetta embrace her inheritance to protect those she cares about, or make an effort to succeed on personal strength and tenacity alone?</p>
+
+                <p>The player influences Rosetta's path through cooking choices and leveling decisions. Feeding her lavish meals triggers dialogue where she questions whether it's acceptable to indulge in noble comforts. Your response adds points towards one outcome. How heavily you level Rosetta affects the amount of points for either outcome in the final battle.</p>
+
+                <div class="center-showcase">
+                    <img src="images/characters/heart.gif" alt="Rosetta">
+                </div>
+
+                <p><b>Inheritance Path:</b> Rosetta believes that refusing her advantages doesn't help anyone. In the final confrontation, she properly wields her arte, summoning and commanding additional swords. This makes Rosetta more powerful mechanically, but in a future arc where her friend is redeemable and recruitable as another fighter, he's weaker and obtaining him is more challenging. This also gives her a preference for lavish meals.</p>
+
+                <p><b>Tenacity Path:</b> Rosetta refuses to rely on her inherited power, proving herself through hard-won skill. This requires significantly higher leveling to succeed in the raid. Rosetta doesn't gain any buff from her Arte going forwards, but when her friend is redeemed and recruited, he becomes more powerful and the two gain synergy bonuses when working together. This also gives her a distaste for lavish meals.</p>
+
+                <p>The variation is meaningful but contained. Both paths maintain Rosetta's core characterization and reach the same narrative beats. The difference is how she reaches those beats and what strengths she develops. Players feel agency because their cooking and leveling choices shaped her growth, but I'm not writing two entirely separate storylines.</p>
+
+                <br><br>
+                <h2>Worldbuilding</h2>
+                <br><br>
+                <p>I design nations, factions, and cultures around internal tensions that create natural story hooks and character conflicts. This creates space for complex characters who struggle with their culture's contradictions rather than simply representing it. These nations also tie into the cooking system through cuisine bonuses and character preferences.</p>
+
+                <div class="heraldry-row">
+                    <div class="heraldry-card">
+                        <img src="images/worldbuilding/Aphros-Sepia.png" alt="Aphros" class="heraldry-sepia">
+                        <img src="images/worldbuilding/Aphros.png" alt="Aphros" class="heraldry-color">
+                        <div class="heraldry-name">Aphros</div>
+                    </div>
+                    <div class="heraldry-card">
+                        <img src="images/worldbuilding/Eudaina-Sepia.png" alt="Eudaina" class="heraldry-sepia">
+                        <img src="images/worldbuilding/Eudaina.png" alt="Eudaina" class="heraldry-color">
+                        <div class="heraldry-name">Eudaina</div>
+                    </div>
+                    <div class="heraldry-card">
+                        <img src="images/worldbuilding/New-Shinari-Sepia.png" alt="New Shinari" class="heraldry-sepia">
+                        <img src="images/worldbuilding/New-Shinari.png" alt="New Shinari" class="heraldry-color">
+                        <div class="heraldry-name">New Shinari</div>
+                    </div>
+                    <div class="heraldry-card">
+                        <img src="images/worldbuilding/Frijia-Sepia.png" alt="Frijia" class="heraldry-sepia">
+                        <img src="images/worldbuilding/Frijia.png" alt="Frijia" class="heraldry-color">
+                        <div class="heraldry-name">Frijia</div>
+                    </div>
+                    <div class="heraldry-card">
+                        <img src="images/worldbuilding/Kyreni-Sepia.png" alt="Kyreni" class="heraldry-sepia">
+                        <img src="images/worldbuilding/Kyreni.png" alt="Kyreni" class="heraldry-color">
+                        <div class="heraldry-name">Kyreni</div>
+                    </div>
+                    <div class="heraldry-card">
+                        <img src="images/worldbuilding/Symposia-Sepia.png" alt="Symposia" class="heraldry-sepia">
+                        <img src="images/worldbuilding/Symposia.png" alt="Symposia" class="heraldry-color">
+                        <div class="heraldry-name">Symposia</div>
+                    </div>
+                </div>
+
+                <h3>Example: Aphros</h3>
+                <div class="character-spotlight">
+                    <img src="images/characters/Taipan-portrait.png" alt="Taipan">
+                    <div class="character-spotlight-caption">Taipan, Focus of the Second Arc, an Aphrosi Lawyer</div>
+                </div>
+                <p>Aphros is a theocracy built around duality. Their faith holds that good must learn from evil to triumph, and that a complete life requires experiencing both sin and virtue. Of course, they acknowledge that one must ultimately be virtuous, but leaving important tools such as lies and deceit only in the hands of the cruel is to cede a whole life to only them. This faith manifests in their governance through two political factions, Astra & Umbra: Astra handles diplomacy, public culture, and holy warfare, while Umbra manages espionage, sanctioned occultism, and clandestine operations. Both acknowledge each other's roles openly. While publicly, Astra is meant to keep Umbrans from straying too far into sin- and Umbra is meant to seek the necessary evils Astrans may be too careful to attempt... both parties cooperate quite extensively. Astrans can be just as conniving as Umbrans, and Umbrans as kind as Astrans.</p>
+
+                <p>Their cultural obsession with duality extends to their cuisine. Aphrosi dishes favor contrasting flavor combinations like sweet and sour or bitter and sweet. Characters from Aphros prefer dishes marked with the "lavish" modifier and alcoholic beverages, as they're staples of the masquerade balls they use to train their spies. The Aphrosi Cuisine chef identity buffs recipes from Aphros while weakening ones from their bordering nation, Eudaina- which is becoming sick with the amount of international incidents that prop up between the two. Aphrosi characters also typically incorporate black and white into their designs!</p>
+
+                <div class="center-showcase">
+                    <img src="images/characters/taipan-and-fauste.png" alt="Taipan And Fauste">
+                </div>
+
+                <p>This worldbuilding creates plot hooks without extra work. The first arc's assassin is a Faceless, a shapeshifting race originating from Aphros. A later arc introduces Aphrosi characters building a nearby settlement, bringing political intrigue and opportunities to cook for guests with specific cultural preferences. Every aspect of the game, from the world, to the characters, to the writing and mechanics are meant to coalesce into creating as interesting a cooking fantasy as possible.</p>
+
+                <div class="scroll-shadow-bottom"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="navigation.js"></script>
+</body>
+
+</html>
