@@ -143,33 +143,33 @@ const ingredientData = {
         label: "Protein",
         description: "Each food group has their own hallmark effect. For proteins, every stack boosts the 'multiplier' for all inspiration the food would give for physical inspiration types, like Martial or Crafting.",
         subgroups: {
-            egg: {
+            Egg: {
                 label: "Egg",
                 description: "Subgroups determine the inspiration delivery method. With eggs, it's banked delivery. It's usually a good idea to prepare an egg-based breakfast before the fighter's afternoon training!",
                 types: {
-                    chicken: {
+                    Chicken: {
                         label: "Chicken",
                         description: "Type typically handles inspiration gain/conversion amounts, and decides the associated flavors. Chicken eggs add a small amount of general inspiration, and converts it all equally between the physical types.",
                         forms: {
-                            whole: {
+                            Whole: {
                                 label: "Whole",
                                 description: "Form usually only matters for determining preferences, or valid recipes. Whole eggs are the unprocessed default, not much to think about there!"
                             },
-                            cracked: {
+                            Cracked: {
                                 label: "Cracked",
                                 description: "You can crack an egg just by right clicking a whole egg and picking crack from a dropdown menu. If you boil a whole egg, you get a boiled egg. If you boil a cracked one, you get poached!"
                             }
                         }
                     },
-                    duck: {
+                    Duck: {
                         label: "Duck",
                         description: "identical inspiration gain to a chicken egg, but it offers a small boost if it's eventually used to create a baked dish. Basically, use it to make doughs!",
                         forms: {
-                            whole: {
+                            Whole: {
                                 label: "Whole",
                                 description: "Whole eggs are the unprocessed default, not much to think about there!"
                             },
-                            cracked: {
+                            Cracked: {
                                 label: "Cracked",
                                 description: "A necessary form for some recipes. Boiling a whole egg results in a boiled egg, while using a cracked egg is necessary for poached!"
                             }
@@ -177,33 +177,33 @@ const ingredientData = {
                     }
                 }
             },
-            meat: {
+            Meat: {
                 label: "Meat",
                 description: "Over-time delivery - provides the most total inspiration, doled out over several days. Always beneficial to keep active.",
                 types: {
-                    beef: {
+                    Beef: {
                         label: "Beef",
                         description: "Standard meat, gives a small amount of General Inspiration and converts it all equally across physical inspiration types.",
                         forms: {
-                            sirloin: {
+                            Sirloin: {
                                 label: "Sirloin",
                                 description: "Sirloins provide an inspiration bonus if they're used in a pan-frying recipe!"
                             },
-                            chuck: {
+                            Chuck: {
                                 label: "Chuck",
                                 description: "Chucks provide an inspiration bonus if they're used to make a burger!"
                             }
                         }
                     },
-                    basilisk: {
+                    Basilisk: {
                         label: "Basilisk",
                         description: "A higher tier meat obtained from hunts. Doesn't give any general inspiration, but converts a large chunk of excess general inspiration from other ingredients directly to martial inspiration. Great supplementary ingredient for the fighter!",
                         forms: {
-                            sirloin: {
+                            Sirloin: {
                                 label: "Sirloin",
                                 description: "Sirloins provide an inspiration bonus if they're used in a pan-frying recipe!"
                             },
-                            chuck: {
+                            Chuck: {
                                 label: "Chuck",
                                 description: "Chucks provide an inspiration bonus if they're used to make a burger!"
                             }
@@ -213,15 +213,15 @@ const ingredientData = {
             }
         }
     },
-    vegetable: {
+    Vegetable: {
         label: "Vegetable",
         description: "Each stack boosts mental inspiration types like Culinary or Medicinal.",
         subgroups: {
-            starchy: {
+            Starchy: {
                 label: "Starchy",
                 description: "Instant delivery - gives the inspiration immediately when eaten. Simple and reliable.",
                 types: {
-                    parsnip: {
+                    Parsnip: {
                         label: "Parsnip",
                         description: "Provides a small amount of General inspiration and converts it all equally across mental inspiration types.",
                         forms: {
@@ -231,7 +231,7 @@ const ingredientData = {
                             }
                         }
                     },
-                    peas: {
+                    Peas: {
                         label: "Peas",
                         description: "Provides a modest amount of general inspiration, but no conversion into other types. Good for generalists like the bard or carpenter, or if you're making a dish with other ingredients that focus more on converting excess general inspiration into the type you want!",
                         forms: {
@@ -247,7 +247,7 @@ const ingredientData = {
                     }
                 }
             },
-            fungi: {
+            Fungi: {
                 label: "Fungi",
                 description: "Fungi provide banked delivery. Fungi aren't the main vegetable subgroup for it though, 'hearty' vegetables have the highest capacity for banked delivery, and their ingredients usually provide more inspiration overall. To make up for this, the fungi subgroup has the unique quirk of additionally adding a protein modifier despite being a vegetable!",
                 types: {
@@ -255,25 +255,25 @@ const ingredientData = {
                         label: "Button Mushroom",
                         description: "Common mushroom. Provides a small amount of general inspiration. No conversion, you usually add it for the food group bonuses!",
                         forms: {
-                            brown: {
+                            Brown: {
                                 label: "Brown",
                                 description: "Button mushrooms are a rare case where the form has a small mechanical effect. Brown mushrooms have an extra 'savory' taste modifier."
                             },
-                            white: {
+                            White: {
                                 label: "White",
                                 description: "White mushrooms give a small bonus to general inspiration if they're used in a salad."
                             }
                         }
                     },
-                    glowshroom: {
+                    Glowshroom: {
                         label: "Glowshroom",
                         description: "A rarer mushroom found from hunts. Provides a small amount of general inspiration, but is actually inedible! Well, mostly.",
                         forms: {
-                            whole: {
+                            Whole: {
                                 label: "Whole",
                                 description: "A whole glowshroom carries the 'inedible' modifier. Basically, trying to feed most characters a dish with this in it will cause them to reject it and get mad at you. Though it's always possible to introduce a monstrous character in the future that loves 'inedible' foods!"
                             },
-                            powdered: {
+                            Powdered: {
                                 label: "Powdered",
                                 description: "Ground glowshrooms are safe to eat, and also count as an 'additive' ingredient. This means it's a seasoning you can apply to your dishes! You get the protein boost from the fungi subgroup, and it also adds a 'pretty' modifier that some characters have a preference for. Also, purely aesthetically, it adds a little sparkle effect to the dish sprite!"
                             }
