@@ -1,3 +1,29 @@
+<style>
+.content-right h1, .content-right h2 {
+    font-family: 'Playfair Display', serif;
+    color: #902923;
+    position: relative;
+    padding-bottom: 0.5rem;
+    padding-left: 2rem;
+    margin-bottom: 4rem;
+}
+.content-right h1::after, .content-right h2::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    width: 90%;
+    height: 40px;
+    background-image: url('images/Long Ribbon.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.content-right h2::after {
+    background-image: url('images/Long Ribbon Blue.png');
+    width: 80%;
+}
+</style>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,36 +46,31 @@
 <div class="content-right-bg"></div>
 <div class="content-right">
 <div class="scroll-shadow"></div>
-    <br>
     <h1>About Me</h1>
-    <p>Hi! If you're reading this from the applicant discord, the website isn't exactly complete.<br><br>
-    As you can see, I haven't written the About Me yet. 'Other Skills' also doesn't work.
+    <div class="side-note">This portfolio is best viewed on desktop.</div>  
+    <p>Hi! I'm Malek, 26 years old, Egyptian. I'm currently in my last year of a management degree at the German University in Cairo. I'm an aspiring indie developer, currently trying to be effective at solo-development to improve my skills enough to attract a team.<br><br>
     
-    <br><br>
-    Despite that, the meat
-    is in the 'Design Projects' tab, there you'll find one listed project- but I've done a large series of case studies
-    on my design decisions for it. The only thing incomplete text-wise in it is the UX Design page, which is meant to be
-    a video tour of my cooking menu, it's not feature complete yet is all. Still, I attached a video of the current look, and
-    the script for the intended final product!
+    I've been interested in game development long since I was in school, but the path to putting the interest into practice sadly wasn't direct. I started university in engineering since I hoped it would carry over to development, but my father passed away my first semester, and my uncle the next during covid. I came back from that slower than I'd like to admit, and ended up in a management degree instead.
 
     <br><br>
-    Sorry, but I haven't added art yet. If the pages look sparse or tiring, keep in mind that I'll be adding some screenshots
-    of the game, as well as character sprites and chibi art across them when they're relevant. When a page is slanted to one
-    direction like this, it's usually because the other side will have some splash-art or pop-up notes.
-    <br><br>
+    I mistook management for an 'easier' path while I recovered, but I'd realized that there was no substitute for passion. Even through my studies, my thesis was games industry focused- and I dedicated my personal time to learning multiple development skills.
+<br><br>
+<h2>Game Development</h2>
+I took a summer in sweden, at the game development incubator Spelkollektivet- voluntarily following their "Indie Quest" self-driven course. I had also joined my university's game development club, winning in two categories for their game jam in my first semester with them and helping them design their art curriculum for the next.
 
-    I would generally appreciate any and all advice you can give me! Though I wouldn't blame you for skimming. I'm mostly curious
-    about the length of the content. I'll be participating in a game jam in december, so I'll likely add what I'll make for that 
-    as a shorter project entry here. Is it already too long? Is the current project strong enough to carry the portfolio? I'd be
-    happy for any and all feedback! If you're curious how the game looks in its current state, this is the look as of now. It'll
-    hopefully be less empty come submission time!
+    <br><br>
+    I've been building since then with varied focuses. I've joined a few game jams as an artist, and have built a few prototypes- landing on my current passion project 'From the Hearth'. I've worked on side-projects such an ace attorney-like mystery game where you have to personally deduce the suspect and <i>choose</i> to pressure them, but From The Hearth's design has a lot to say- and I hoped it would sufficiently display how I handle all sorts of design challenges!
+    <br><br>
+    
+    The portfolio may show that I'm pretty multi-disciplinary, but I assure you- all the skills I've learned are in service of design! My goal in learning art and coding is to be able to interface better with artists and programmers, and to build my design decisions off experience in every involved field.
     <br><br><br><br>
 
-    <img src="images/demo.png"></img>
     <div class="scroll-shadow-bottom"></div>
     </p>
     <br><br>
 </div>
 <script src="navigation.js"></script>
+<img src="images/characters/Taipan-portrait-big.png" class="splash-art-left" alt="Taipan">
+
 </body>
 </html>

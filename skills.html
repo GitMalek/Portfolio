@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other Skills</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Mirror content-right but anchored left */
+        .content-skills {
+            max-width: 1200px;
+            position: relative;
+            left: -11%;
+            margin: 2rem auto 0 auto;
+            padding: 4rem 2rem 2rem 2rem;
+            padding-bottom: 20vh;
+            background: #f5ebe0;
+            box-shadow:
+                0 4px 6px rgba(0, 0, 0, 0.1),
+                inset 0 0 60px rgba(230, 100, 60, 0.25);
+            overflow-y: auto;
+            max-height: 100vh;
+            z-index: 10;
+            animation: slideInFromLeft 0.8s ease-out;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+        .content-skills.exit {
+            animation: slideOutToLeft 0.5s ease-in forwards;
+        }
+        @keyframes slideInFromLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideOutToLeft {
+            from { opacity: 1; transform: translateX(0); }
+            to   { opacity: 0; transform: translateX(-30px); }
+        }
+
+        .content-skills::-webkit-scrollbar { width: 12px; }
+        .content-skills::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
+        .content-skills::-webkit-scrollbar-thumb { background: rgba(100,60,40,0.5); border-radius: 10px; }
+        .content-skills::-webkit-scrollbar-thumb:hover { background: rgba(100,60,40,0.7); }
+
+        /* Scroll shadows wired to .content-skills */
+        .content-skills .scroll-shadow {
+            position: sticky;
+            top: -65px;
+            left: 0; right: 0;
+            height: 120px;
+            background: linear-gradient(to bottom,
+                rgba(230, 210, 190, 1) 0%,
+                rgba(220, 190, 160, 0.9) 30%,
+                rgba(200, 160, 130, 0.5) 50%,
+                transparent 100%);
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            margin: -4rem -2rem -40px -2rem;
+        }
+        .content-skills.scrolled .scroll-shadow { opacity: 1; }
+
+        .content-skills .scroll-shadow-bottom {
+            position: sticky;
+            bottom: -80px;
+            left: -2rem; right: -2rem;
+            width: auto;
+            height: 200px;
+            background: linear-gradient(to top,
+                rgba(230, 210, 190, 1) 0%,
+                rgba(220, 190, 160, 0.9) 30%,
+                rgba(200, 160, 130, 0.5) 50%,
+                transparent 100%);
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0;
+            animation: fadeInDelayed 0.6s ease-out 0.8s forwards;
+            transition: opacity 0.3s ease;
+        }
+        .content-skills:not(.has-more-content) .scroll-shadow-bottom { opacity: 0 !important; }
+
+        /* Headings matching the site style */
+        .content-skills h1, .content-skills h3 {
+            font-family: 'Playfair Display', serif;
+            color: #902923;
+            margin-top: 1.5rem;
+            margin-bottom: 4rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            padding-left: 2rem;
+        }
+        .content-skills h1::after, .content-skills h3::after {
+            content: '';
+            position: absolute;
+            bottom: -30px; left: 0;
+            width: 90%; height: 40px;
+            background-image: url('images/Long Ribbon.png');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+        .content-skills h2 {
+            font-family: 'Playfair Display', serif;
+            color: #234b90;
+            margin-top: 1.5rem;
+            margin-bottom: 4rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            padding-left: 2rem;
+        }
+        .content-skills h2::after {
+            content: '';
+            position: absolute;
+            bottom: -30px; left: 0;
+            width: 80%; height: 40px;
+            background-image: url('images/Long Ribbon Blue.png');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+        .content-skills p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .content-skills em, .content-skills i { color: #5568d3; font-style: italic; }
+
+        .skill-section { margin-bottom: 3rem; }
+
+        .external-link {
+            color: #5568d3;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(85, 104, 211, 0.3);
+            transition: border-color 0.2s;
+        }
+        .external-link:hover { border-color: #5568d3; }
+
+        .wiki-links {
+            background: rgba(230, 210, 190, 0.5);
+            border-left: 4px solid #5568d3;
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+        }
+        .wiki-links p {
+            margin-bottom: 0.4rem !important;
+            font-size: 0.95rem !important;
+        }
+        .wiki-links p:last-child { margin-bottom: 0 !important; }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0 1.5rem 0;
+        }
+        .tag {
+            background: rgba(144, 41, 35, 0.1);
+            border: 1px solid rgba(144, 41, 35, 0.3);
+            color: #902923;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.9rem;
+            border-radius: 2px;
+        }
+        .tag.blue {
+            background: rgba(85, 104, 211, 0.1);
+            border-color: rgba(85, 104, 211, 0.3);
+            color: #5568d3;
+        }
+        .tag.green {
+            background: rgba(45, 122, 45, 0.1);
+            border-color: rgba(45, 122, 45, 0.3);
+            color: #2d7a2d;
+        }
+
+        .skills-splash {
+            float: right;
+            width: 300px;
+            margin: 0 0 2rem 2rem;
+        }
+        .skills-splash img {
+            width: 100%;
+            image-rendering: pixelated;
+            display: block;
+        }
+        .skills-splash .caption {
+            font-size: 0.85rem;
+            color: #777;
+            font-style: italic;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .splash-art-right {
+            position: fixed;
+            right: -5%;
+            top: 70%;
+            transform: translateY(-50%);
+            max-width: 40%;
+            height: auto;
+            z-index: 8;
+            pointer-events: none;
+            opacity: 0.9;
+            mask-image: linear-gradient(to left,
+                black 0%,
+                black 60%,
+                transparent 100%);
+            -webkit-mask-image: linear-gradient(to left,
+                black 0%,
+                black 60%,
+                transparent 100%);
+        }
+    </style>
+</head>
+<body>
+<div class="page-transition-overlay"></div>
+
+    <nav>
+        <a href="index.html">About Me</a>
+        <a href="projects.html">Design Projects</a>
+        <a href="skills.html">Other Skills</a>
+    </nav>
+
+<img src="images/characters/rosett-portrait-flipped.png" class="splash-art-right" alt="">
+
+<div class="content-skills has-more-content">
+<div class="scroll-shadow"></div>
+
+    <h1>Other Skills</h1>
+
+    <!-- ART -->
+    <div class="skill-section">
+        <h2>Art</h2>
+
+        <div class="skills-splash">
+            <img src="images/stove-pixel.png" alt="Pixel art stove projected onto a low-poly 3D model">
+            <div class="caption">Pixel art projected isometrically onto low-poly Blender geometry — the technique described below.</div>
+        </div>
+
+        <div class="tag-row">
+            <span class="tag">Pixel Art</span>
+            <span class="tag">Low-Poly 3D (Blender)</span>
+            <span class="tag">Digital Illustration</span>
+            <span class="tag">Music Composition</span>
+        </div>
+
+        <p>Pixel art is my primary medium, and it's visible throughout the rest of this portfolio. Character sprites,
+        UI elements, in-world assets, and the visual identity of <i>From The Hearth</i> as a whole.</p>
+
+        <p>For 3D work I use Blender, specifically as part of a pipeline I've developed: I model low-poly isometric geometry,
+        then project pixel art textures onto it. The result reads as a 2D pixel sprite from a fixed angle, but it's sitting
+        on actual 3D geometry. To allow for camera rotation, I've built a mesh-swapping system in Unity that switches between
+        pre-rendered projections from different angles mid-rotation so the object always presents the correct pixel-art face
+        to the camera while remaining fully rotatable in 3D space.</p>
+
+        <video controls width="100%" style="margin: 1rem 0; display: block;">
+            <source src="images/Movie_009.mp4" type="video/mp4">
+        </video>
+
+        <p>I also do digital illustration outside of pixel art, though it's a less practiced domain. I've recently begun
+        learning music composition as well, mostly by transcribing pieces I like as a starting point.</p>
+
+        <img src="images/Nia.png" alt="Digital illustration — character art" style="max-width: 60%; display: block; margin: 1rem auto;">
+    </div>
+
+    <!-- CODING -->
+    <div class="skill-section">
+        <h2>Programming</h2>
+
+        <div class="tag-row">
+            <span class="tag blue">C#</span>
+            <span class="tag blue">Unity</span>
+            <span class="tag blue">HTML / CSS / JS</span>
+        </div>
+
+        <p>My primary language is C#, used through Unity for game development. The systems described across this portfolio,
+        the inspiration economy, NPC progression, the cooking menu, are all implemented or prototyped in C#. I'm comfortable
+        with Unity's component model, editor tooling, and building gameplay systems from scratch.</p>
+
+        <p>The 'Indie Quest' course I attended in Sweden had us learn to build games from the ground up using only the C# console before we moved on to Unity. Having a mindset that builds logic separate to game development has helped me be able to solve problems for myself as well, for example- to meet the deadlines for this application, I built a small WinForms program to hijack my screen and deliver alarms I can't ignore to make sure I'm following schedule. I'm not just interested in games coding, I'll regularly be trying to make useful software for myself going forwards.</p>
+<img src="images/riseup.png" alt="RiseUp — a personal routine and alarm app" style="max-width: 80%; display: block; margin: 1rem auto; border: 1px solid rgba(0,0,0,0.1);">
+        <p>I had already worked with HTML, CSS, and Javascript prior to working on this portfolio, but I've learned quite a bit making it as my first larger web project.</p>
+
+        <p>I also have a growing interest in how large language models function at a structural level, particularly the
+        potential for grammar-based generation systems, such as GNFB grammars, to power procedural narratives or event selection in games. The
+        idea of an LLM operating as a constrained storyteller within authored rule-sets is something I find compelling as a
+        design problem. It's a theoretical interest at this stage, but one I intend to pursue practically with all the necessary ethical considerations to ensure the research isn't intensely resource-intensive. Additionally, I'm only interested in how these tools can help us create mechanics that otherwise wouldn't exist, rather than using them to replace parts of the process we can already manage.</p>
+    </div>
+
+    <!-- WRITING & WORLDBUILDING -->
+    <div class="skill-section">
+        <h2>Writing &amp; Worldbuilding</h2>
+
+        <div class="tag-row">
+            <span class="tag green">Tabletop RPG</span>
+            <span class="tag green">Lore Writing</span>
+            <span class="tag green">Worldbuilding</span>
+            <span class="tag green">Narrative Design</span>
+        </div>
+
+        <p>I run and play tabletop RPGs regularly, which has shaped how I think about narrative, character motivation, and
+        collaborative world-building. Most of my writing exists inside living game worlds rather than standalone fiction.</p>
+
+        <p>The most concrete example: <i>Aphros</i>, the faction referenced in the <i>From The Hearth</i> narrative section,
+        is lore I originally wrote for <i>Chronicles of Eternia: Meranthe</i>, a persistent BYOND Engine roleplay-enforced game server with around 100-200 concurrent
+        players and over a decade of accumulated worldbuilding. The faction still has an active playerbase. Because I wrote it,
+        I have permission to carry it into my own work.</p>
+
+        <div class="wiki-links">
+            <p><b>Chronicles of Eternia — relevant lore pages:</b></p>
+            <p>→ <a href="https://chronicles-of-eternia.com/lore/index.php?title=Aphros" class="external-link" target="_blank">Aphros</a> — the kingdom and its founding philosophy</p>
+            <p>→ <a href="https://chronicles-of-eternia.com/lore/index.php?title=Athelios" class="external-link" target="_blank">Athelios</a> — the patron deity; god of duality.</p>
+            <p>→ <a href="https://chronicles-of-eternia.com/lore/index.php?title=Faceless" class="external-link" target="_blank">The Faceless</a> — the shapeshifting intelligence agency that built the kingdom from the inside</p>
+        </div>
+
+        <p>Writing for a live world with real players means your lore has to be legible, internally consistent, and
+        interesting enough that people actually build characters around it. It's a different discipline from writing fiction
+        in isolation, closer to game writing than authorship.</p>
+    </div>
+
+<div class="scroll-shadow-bottom"></div>
+</div>
+
+<script src="navigation.js"></script>
+<script>
+    // Wire scroll shadows to .content-skills (mirrors navigation.js logic for .content-right)
+    const contentSkills = document.querySelector('.content-skills');
+    if (contentSkills) {
+        contentSkills.addEventListener('scroll', () => {
+            if (contentSkills.scrollTop > 50) {
+                contentSkills.classList.add('scrolled');
+            } else {
+                contentSkills.classList.remove('scrolled');
+            }
+            const isAtBottom = contentSkills.scrollHeight - contentSkills.scrollTop <= contentSkills.clientHeight + 50;
+            if (!isAtBottom) {
+                contentSkills.classList.add('has-more-content');
+            } else {
+                contentSkills.classList.remove('has-more-content');
+            }
+        });
+    }
+
+    // Wire exit animation to this element for nav clicks
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (contentSkills) contentSkills.classList.add('exit');
+        });
+    });
+</script>
+<img src="images/characters/rosetta-portrait-flipped.png" class="splash-art-right" alt="">
+</body>
+</html>

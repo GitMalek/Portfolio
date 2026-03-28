@@ -265,7 +265,7 @@ const ingredientData = {
                             }
                         }
                     },
-                    Glowshroom: {
+                    glowshroom: {
                         label: "Glowshroom",
                         description: "A rarer mushroom found from hunts. Provides a small amount of general inspiration, but is actually inedible! Well, mostly.",
                         forms: {

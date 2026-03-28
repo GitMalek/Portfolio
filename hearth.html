@@ -153,8 +153,7 @@
                 </div>
 
                 <p>I got the idea for this system when I read 
-                        <a href="https://mitadmissions.org/blogs/entry/parametric-cooking/" target="_blank">this paper on parametric cooking</a>
-. I call it notation-based crafting, because while the player never has to
+                        <a href="https://mitadmissions.org/blogs/entry/parametric-cooking/" target="_blank">this paper on parametric cooking</a>. I call it notation-based crafting, because while the player never has to
                     see it- <span class="tooltip-trigger" data-tooltip="tip1">I'm actually structuring ingredients
                         like chemical formulas entirely on the backend.</span> This is exclusively for my convenience,
                     because it makes it easier to keep track of what makes up a <span class="tooltip-trigger"
@@ -503,115 +502,6 @@
                 <video controls width="100%" class="embedded-video">
                     <source src="images/Movie_003.mp4" type="video/mp4">
                 </video>
-                <h2>Script</h2>
-                <br><br>
-                <p><i>Hi hi, if you're reading this- this page isn't done. In the final portfolio, it will be JUST the
-                        video, I'll be narrating over it to give an idea of the user experience. Still, if you're
-                        curious, I'll put the script I've got written down here. Above is a placeholder video of how
-                        things work in engine right now, missing some features from the description below. When I've
-                        added them, I'll rerecord the video with the following narration! Me describing mechanics here is
-                        mostly for your sake, since some of them aren't implemented yet.</i></p>
-
-                <h3>Menu Tour</h3>
-                <p>
-                    [Clip of character moving to stove]
-                    To start cooking, you simply walk to one of your appliances in the kitchen. When you interact with a
-                    cooking appliance, it'll open the cooking menu. It's split into three panels, with two visible at a
-                    time.
-                    <br><br>
-                    [Zoom on Appliance Panel]
-                    This displays the appliance they're using. [Show clip of the timing meter] At the top, a timing
-                    meter appears during cooking. If something varies in form, timing windows are color-coded.
-                    Some appliances have multiple utensils [Click arrow next to the frying pan, swap to pot], you swap
-                    them when you want to change cooking methods. The stove has an oven too [Mouse over oven, open
-                    animation]
-                    Click it and you'll switch to baking [click, show baking tray, click back to stove for frying pan].
-                    <br><br>
-                    [Zoom to the Technique button off to the left, not in video above]
-                    This button expands when you select a recipe that has relevant techniques, rare as they are. [Click
-                    Fried Egg, show the technique panel expand to show 'Up, Down: Flip']
-                    <br><br>
-                    [Zoom to the bottom of the panel, showing the fighter's chibi sprite, not in video above]
-                    Over here is the mess hall window, it shows you a chibi character sprite of whoever's in the mess
-                    hall right now and can be fed. You can click them to see their profile.
-                    When you cook, each ingredient gets added to your utensil one by one in an animation, if you add an
-                    ingredient a character likes or dislike- they'll react quickly with a heart
-                    or sweat icon. If more than one's present here, they'll sometimes have little banter dialogue
-                    bubbles.
-                    <br><br>
-                    [Zoom to the Cooking Panel]
-                    The cook button displays the method group and specific technique.
-                    Below are three ribbons: essential ingredients accept ONLY the minimum ingredients to be considered
-                    your target recipe, so a fried egg recipe would only accept one fried egg.
-                    Optional ingredients are limited slots for extra ingredients, if an optional doesn't make sense to
-                    add- they're greyed out in your inventory.
-                    Additive ingredients are seasonings, like salt and pepper, or herbs. They work the same as optional
-                    ingredients, they just don't compete with them for slots and have less effects. You have more of
-                    these slots than optional ones.
-                    <br><br>
-                    [Click slot, zoom to inventory panel]
-                    Clicking a slot brings up the inventory, pretty standard so far. It won't let you drag ingredients
-                    that wouldn't make a valid recipe.
-                    <br><br>
-                    [Click off inventory, bringing back the appliance panel. Zoom into recipe list. Unlike the video
-                    above, it has a button with a food pyramid icon and an arrow pointing up, alongside one with a clock
-                    icon]
-                    The recipe list auto-greys out recipes you don't have ingredients for. Clicking these buttons brings
-                    up a dropdown, the first one brings up a list of food groups, the second time slots.
-                    If you click, say, protein- it'll sort recipes in order of stacks of protein modifiers taking into
-                    account their ingredients too. If you click morning when you're sorting time slots, it'll bring
-                    foods with a breakfast buff to the top.
-                </p>
-
-                <h3>Intended User Experience</h3>
-                <p>
-                    Here's the intended flow: The player wakes up, sees the fighter in the mess hall.
-                    They know protein boosts physical inspiration, so they sort by protein and morning time.
-                    <br><br>
-                    Two options stand out: Bagel and Lox versus Steak and Eggs. Bagel and Lox uses seafood—instant
-                    inspiration.
-                    Steak and Eggs uses meat and eggs, over-time and banked. It's a weekday, the fighter trains this
-                    afternoon.
-                    They choose Steak and Eggs for banked inspiration before training, but they decide they'll give make
-                    some
-                    Bagel and Lox for her on the weekend.
-                    <br><br>
-                    They click the magnifying icon next to the recipe's name for the list of known optional ingredients,
-                    seems they can add more eggs.
-                    It looks like while the recipe can accept any type of egg, it also accepts a pre-cooked fried egg.
-                    They remember the fighter likes
-                    her eggs over-easy, so they cook them first. [Two fried eggs cooked, up down pressed each time to
-                    flip, space pressed to end cooking early]
-                    <br><br>
-                    They open her profile, her 'flavor palette' entry shows "Savory > Bitter = Sweet ??? Sour ???
-                    Spicy", this means that if you add more flavors,
-                    you get a bonus the closer you are to this order of their stacks. It's fine if some tastes aren't
-                    present, each one just gives its own bonus if it's in the correct spot.
-                    The ingredients are already pretty savory. Savory gives more banked experience, but bitter increases
-                    over-time duration slightly.
-                    <br><br>
-                    They decide to add black pepper for a smidge of bitterness. They've added an uncooked cut of beef,
-                    two over-easy eggs, and black pepper.
-                    <br><br>
-                    They click cook, only timing window is for the steak to decide rarity. They don't know the fighter's
-                    preference, so they let it cook to well done.
-                    <br><br>
-                    Finally, the completion popup shows you the overall quality, flavor modifiers, and any other
-                    modifier on the final dish. You can mouse over them for a tooltip, or click
-                    the magnifying glass on the dish's icon to go to an overview window. It has a tab to show you
-                    modifier by type, like food group, delivery method, conversion- or to show you Modifiers
-                    by their ingredient sources, so modifiers from an egg will be grouped together, same with the second
-                    egg and the steak, as well as the black pepper.
-                    <br><br>
-                    Below that are the inspiration numbers. These are just total inspiration gained. If you mouse over
-                    one of the values, a dropdown appears showing you a breakdown of how much of it is general,
-                    how much is martial, and whatever other type is there based on the ingredients you used.
-                    <br><br>
-                    Finally, it's time to deliver. When you hand the fighter her food, she might give a comment on one
-                    aspect that could be done better, or let you know about a craving for a recipe she likes.
-                    She thanks you for the dish, and lets you know that she likes her steak medium rare. Since you've
-                    seen that dialogue, her character profile updates to add that preference automatically.
-                </p>
                 <div class="scroll-shadow-bottom"></div>
             </div>
         </div>
@@ -683,22 +573,22 @@
                 <br><br>
                 <h2>Worldbuilding</h2>
                 <br><br>
-                <p>I design nations, factions, and cultures around internal tensions that create natural story hooks and character conflicts. This creates space for complex characters who struggle with their culture's contradictions rather than simply representing it. These nations also tie into the cooking system through cuisine bonuses and character preferences.</p>
+                <p>I design nations, factions, and cultures around internal tensions that create natural story hooks and character conflicts. When building a faction, I start with a core tension or duality that makes perfect adherence to its ideals impossible. This creates space for complex characters who struggle with their culture's contradictions rather than simply representing it. These nations also tie into the cooking system through cuisine bonuses and character preferences.</p>
 
                 <div class="heraldry-row">
                     <div class="heraldry-card">
-                        <img src="images/worldbuilding/Aphros-Sepia.png" alt="Aphros" class="heraldry-sepia">
-                        <img src="images/worldbuilding/Aphros.png" alt="Aphros" class="heraldry-color">
+                        <img src="images/worldbuilding/aphros-sepia.png" alt="Aphros" class="heraldry-sepia">
+                        <img src="images/worldbuilding/aphros.png" alt="Aphros" class="heraldry-color">
                         <div class="heraldry-name">Aphros</div>
                     </div>
                     <div class="heraldry-card">
-                        <img src="images/worldbuilding/Eudaina-Sepia.png" alt="Eudaina" class="heraldry-sepia">
-                        <img src="images/worldbuilding/Eudaina.png" alt="Eudaina" class="heraldry-color">
+                        <img src="images/worldbuilding/eudaina-sepia.png" alt="Eudaina" class="heraldry-sepia">
+                        <img src="images/worldbuilding/eudaina.png" alt="Eudaina" class="heraldry-color">
                         <div class="heraldry-name">Eudaina</div>
                     </div>
                     <div class="heraldry-card">
-                        <img src="images/worldbuilding/New-Shinari-Sepia.png" alt="New Shinari" class="heraldry-sepia">
-                        <img src="images/worldbuilding/New-Shinari.png" alt="New Shinari" class="heraldry-color">
+                        <img src="images/worldbuilding/new-shinari-sepia.png" alt="New Shinari" class="heraldry-sepia">
+                        <img src="images/worldbuilding/new-shinari.png" alt="New Shinari" class="heraldry-color">
                         <div class="heraldry-name">New Shinari</div>
                     </div>
                     <div class="heraldry-card">
@@ -720,7 +610,7 @@
 
                 <h3>Example: Aphros</h3>
                 <div class="character-spotlight">
-                    <img src="images/characters/Taipan-portrait.png" alt="Taipan">
+                    <img src="images/characters/taipan-portrait.png" alt="Taipan">
                     <div class="character-spotlight-caption">Taipan, Focus of the Second Arc, an Aphrosi Lawyer</div>
                 </div>
                 <p>Aphros is a theocracy built around duality. Their faith holds that good must learn from evil to triumph, and that a complete life requires experiencing both sin and virtue. Of course, they acknowledge that one must ultimately be virtuous, but leaving important tools such as lies and deceit only in the hands of the cruel is to cede a whole life to only them. This faith manifests in their governance through two political factions, Astra & Umbra: Astra handles diplomacy, public culture, and holy warfare, while Umbra manages espionage, sanctioned occultism, and clandestine operations. Both acknowledge each other's roles openly. While publicly, Astra is meant to keep Umbrans from straying too far into sin- and Umbra is meant to seek the necessary evils Astrans may be too careful to attempt... both parties cooperate quite extensively. Astrans can be just as conniving as Umbrans, and Umbrans as kind as Astrans.</p>
@@ -728,7 +618,7 @@
                 <p>Their cultural obsession with duality extends to their cuisine. Aphrosi dishes favor contrasting flavor combinations like sweet and sour or bitter and sweet. Characters from Aphros prefer dishes marked with the "lavish" modifier and alcoholic beverages, as they're staples of the masquerade balls they use to train their spies. The Aphrosi Cuisine chef identity buffs recipes from Aphros while weakening ones from their bordering nation, Eudaina- which is becoming sick with the amount of international incidents that prop up between the two. Aphrosi characters also typically incorporate black and white into their designs!</p>
 
                 <div class="center-showcase">
-                    <img src="images/characters/taipan-and-fauste.png" alt="Taipan And Fauste">
+                    <img src="images/characters/Taipan-and-Fauste.png" alt="Taipan And Fauste">
                 </div>
 
                 <p>This worldbuilding creates plot hooks without extra work. The first arc's assassin is a Faceless, a shapeshifting race originating from Aphros. A later arc introduces Aphrosi characters building a nearby settlement, bringing political intrigue and opportunities to cook for guests with specific cultural preferences. Every aspect of the game, from the world, to the characters, to the writing and mechanics are meant to coalesce into creating as interesting a cooking fantasy as possible.</p>
